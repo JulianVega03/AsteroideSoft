@@ -1,0 +1,180 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    font-family: 'Jost', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    font-family: "Montserrat", sans-serif;
+    height: 100%;
+}
+
+header {
+    background-color: #6c757d;
+    height: 65px;
+}
+
+.contenedor {
+    margin: 15px;
+    display: flex;
+    border: 1px solid #dadce0;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+.principal {
+    width: 75%;
+    /* height: 600px; */
+}
+
+.sec {
+    padding: 1em;
+}
+
+.secundario {
+    width: 25%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+    width: 95%;
+    height: 50%;
+    border-left: 1px solid #dadce0;
+    border-radius: 3px;
+    padding-left: 7px;
+}
+
+.participantes {
+    margin-top: 15px;
+    width: 95%;
+    height: 30%;
+    border-left: 1px solid #dadce0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+}
+
+button {
+    border-radius: 5px;
+    font-size: large;
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    padding: 0.5em;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.btn_danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn_info {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.contentEntregables {
+    padding: 1em;
+}
+
+.entregable {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    margin-top: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 3px;
+}
+
+.etapa {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    margin-top: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 3px;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    color: black;
+    border: 3px solid white;
+    border-bottom: 3px solid #dadce0;
+    height: 40px;
+    font-size: 18px;
+    padding-left: 20px;
+    transition: .5s;
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+select {
+    background-color: transparent;
+    border: none;
+    color: black;
+    border: 3px solid white;
+    border-bottom: 3px solid #dadce0;
+    height: 40px;
+    font-size: 18px;
+    padding-left: 20px;
+    transition: .5s;
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.iInfo {
+    width: 100%;
+}
+
+textarea {
+    height: 120px;
+    padding: 1em;
+    resize: none;
+    font-size: 18px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    color: black;
+    border: 3px solid white;
+    border-bottom: 3px solid #dadce0;
+}
+ 
+.tEtapa{
+    width: 48%;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contentEtapas {
+    padding: 1em;
+}

@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  background: rgb(255, 255, 255);
+}
+
+header {
+  background-color: rgb(191, 159, 228);
+  height: 65px;
+}
+
+.opciones {
+  display: flex;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.formulario {
+  width: 70%;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titulo {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+.titulo span {
+  font-size: 55px;
+}
+.contenedor {
+  width: 100%;
+}
+.contenedor-margen {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 2em 0;
+}
+.primero {
+  width: 55%;
+  height: 400px;
+  background-color:  rgb(137, 72, 190);
+  display: flex;
+  flex-direction: column;
+  padding-right: 1em;
+  padding-left: 3em;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+.primero h2{
+    padding-top: 0.5em;
+    padding-bottom: 0.7em;
+}
+.primero textarea{
+    width: 96%;
+    height: 70%;
+}
+.segundo {
+  width: 43%;
+  height: 400px;
+  background-color: rgb(137, 72, 190);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+.fecha-principal {
+  height: 80px;
+  width: 100%;
+  background-color:  rgb(137, 72, 190);
+  display: flex;
+  justify-content: space-between;
+}
+
+.fecha-inicio{
+    
+    width: 50%;
+    padding-top: 1.5em;
+    padding-left: 5em;
+}
+.fecha-final{
+    
+    width: 50%;
+    padding-top: 1.5em;
+    padding-left: 2.2em;
+}
+.coste {
+  height: 80px;
+  width: 100%;
+  background-color: rgb(137, 72, 190);
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.coste button{
+    width: 230px;
+    height: 70px;
+}
+.coste input{
+    width: 230px;
+    margin-left: 2em;
+    height: 70px;
+   
+}
+
+

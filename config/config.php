@@ -1,8 +1,8 @@
 <?php
 
-define ('URL','http://localhost/ArquitecturaMVC/');
+define ('URL','http://localhost/PHP-MVC/');
 define('HOST','localhost');
-define('DB','dbname');
+define('DB','integrador');
 define('USER','root');
 define('PASSWORD','');
 define('CHARSET','utf8mb4');

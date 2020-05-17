@@ -3,7 +3,7 @@
 class App
 {
 
-    protected $controller = "HomeController";
+    protected $controller = "IndexController";
     protected $method = "actionIndex";
     protected $params = [];
 
@@ -28,7 +28,6 @@ class App
                 unset($url[1]);
             }
         }
-
         $this->params = $url ? array_values($url) : $this->params;
 
         call_user_func_array([$this->controller, $this->method], $this->params);
@@ -41,6 +40,8 @@ class App
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
             return $url;
+        } else {
+            return array("index");
         }
     }
 }
