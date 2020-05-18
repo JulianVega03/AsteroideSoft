@@ -4,7 +4,7 @@ require_once 'entities/Persona.php';
 class PersonaModel extends Model{
 
         private $db;
-        public $persona;
+        private $persona;
 
     function __construct()
     {
