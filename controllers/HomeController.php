@@ -13,8 +13,20 @@ class HomeController extends Controller
 
     public function actionIndex()
     {
-        $datos = ["titulo" => "Welcome to Home"];
+        $datos = ["titulo" => "Home"];
         $this->view('gerente/home', $datos);
+    }
+
+    public function actionContrato()
+    {
+        $datos = ["titulo" => "Contrato"];
+        $this->view('gerente/contrato', $datos);
+    }
+
+    public function actionProyecto()
+    {
+        $datos = ["titulo" => "Proyectos"];
+        $this->view('gerente/proyecto', $datos);
     }
 
     public function actionRegistrar()
@@ -70,7 +82,7 @@ class HomeController extends Controller
 
     public function obtenerTiposPersonas()
     {
-        $lista = ["Empleado", "Residente"];
+        $lista = ["Empleado", "Representante"];
 
         return $lista;
     }

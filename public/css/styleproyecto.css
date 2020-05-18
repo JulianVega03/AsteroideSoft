@@ -100,17 +100,9 @@ button:hover {
     padding: 1em;
 }
 
-.entregable {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1em;
-    margin-top: 10px;
-    border: 1px solid #dadce0;
-    border-radius: 3px;
-}
-
-.etapa {
+/* Subiendo a rama */
+/* Se agrega para todas las vistas */
+.divisorSecundario {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -167,14 +159,57 @@ textarea {
  
 .tEtapa{
     width: 48%;
+    height: 80px;
 }
 
 .inputs {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
 .contentEtapas {
     padding: 1em;
+}
+
+.contentActividades {
+    padding: 1em;
+}
+
+.table {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 75%;
+    text-align: center;
+}
+
+.terciario {
+    width: 100%;
+}
+
+.title {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.title>input {
+    margin-left: 1em;
+    width: 80%;
+}
+
+.enlace{
+    text-decoration: none;
+    color: white;
+}
+.enlace:hover{
+    text-decoration: none;
+    color: white;
 }

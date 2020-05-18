@@ -19,7 +19,6 @@ class IndexController extends Controller
     public function actionLogin()
     {
         $userSession = new UserSession();
-
         if (isset($_POST['email']) && isset($_POST['pass'])) {
             $userForm = $_POST['email'];
             $passForm = $_POST['pass'];
@@ -29,13 +28,9 @@ class IndexController extends Controller
                 $this->personaModel->setUser($userForm);
 
                 header("Location:" . constant('URL') . "home");
-                // echo "ingreso";
             } else {
                 echo "fail";
-                // $errorLogin = "Nombre de usuario y/o password es incorrecto";
             }
         }
     }
-
-    
 }

@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?=URL?>public/css/styleregistrar.css" />
     <script src="https://kit.fontawesome.com/e43617e4d2.js" crossorigin="anonymous"></script>
+  
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="<?= URL ?>public/css/stylecontrato.css" />
+    <link rel="stylesheet" href="<?=URL?>public/css/styleproyecto.css">
+    <link rel="stylesheet" href="<?=URL?>public/css/stylemodal.css">
 </head>
 
 <body>
@@ -30,10 +39,10 @@
                         <a class="nav-link" href="<?=URL?>home/logout">Cerrar Sesión</a>
                     </li>
                 </ul>
-                <span class="navbar-text">
+                <!-- <span class="navbar-text">
                     Micro-Framework basado en la arquitectura MVC
                 </span>
-            </div>
+            </div> -->
         </nav>
     </div>
     <br>
