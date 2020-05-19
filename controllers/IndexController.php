@@ -4,7 +4,7 @@ require_once 'UserSession.php';
 class IndexController extends Controller
 {
 
-    public $personaModel;
+    private $personaModel;
 
     public function __construct()
     {
@@ -19,6 +19,8 @@ class IndexController extends Controller
     public function actionLogin()
     {
         $userSession = new UserSession();
+        $userSession->startSession();
+        
         if (isset($_POST['email']) && isset($_POST['pass'])) {
             $userForm = $_POST['email'];
             $passForm = $_POST['pass'];
@@ -29,7 +31,8 @@ class IndexController extends Controller
 
                 header("Location:" . constant('URL') . "home");
             } else {
-                echo "fail";
+                $loginResponse = "Nombre de usuario y/o password es incorrecto";
+                include_once 'views/index.php';
             }
         }
     }

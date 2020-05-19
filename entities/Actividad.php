@@ -1,29 +1,30 @@
 <?php
-class  Actividad{
+class  Actividad
+{
 
 
- private $id;
- private $nombre;
- private $duracion;
- private $etapa;
+    private $id;
+    private $nombre;
+    private $duracion;
+    private $etapa;
 
 
- public function getId()
+    public function getId()
     {
         return $this->id;
     }
 
-  public function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
     }
 
-   public function getNombre()
+    public function getNombre()
     {
         return $this->nombre;
     }
 
-  public function setNombre($nombre)
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
@@ -33,7 +34,7 @@ class  Actividad{
         return $this->duracion;
     }
 
-  public function setDuracion($duracion)
+    public function setDuracion($duracion)
     {
         $this->duracion = $duracion;
     }
@@ -43,7 +44,7 @@ class  Actividad{
         return $this->etapa;
     }
 
-  public function setEtapa($etapa)
+    public function setEtapa($etapa)
     {
         $this->etapa = $etapa;
     }

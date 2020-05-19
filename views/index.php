@@ -16,6 +16,13 @@
         <div class="form-contenedor ingresar-contenedor">
             <form action="<?= URL ?>index/login" method="POST">
                 <h1>Ingresar</h1>
+                <?php 
+                if(isset($loginResponse)){
+                    echo '<h5 style="color:red">';
+                    echo $loginResponse;
+                    echo '</h5>';
+                }
+                ?>
                 <div class="social-contenedor">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>

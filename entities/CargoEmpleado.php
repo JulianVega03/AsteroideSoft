@@ -1,40 +1,43 @@
 <?php
- /**
-  * 
-  */
- class CargoEmpleado
- {
- 	private $documento;
- 	private $cargo;
- 	private $periodoInicio;
- 	private $periodoFin;
 
- 	public function getDocumento(){
+/**
+ * 
+ */
+class CargoEmpleado
+{
+    private $documento;
+    private $cargo;
+    private $periodoInicio;
+    private $periodoFin;
 
- 		return $this->documento;
- 	}
-
- 	public function setDocumento($documento)
+    public function getDocumento()
     {
-        $this->documento= $documento;
+
+        return $this->documento;
     }
 
-    public function getCargo(){
-
- 		return $this->cargo;
- 	}
-
- 	public function setCargo($cargo)
+    public function setDocumento($documento)
     {
-        $this->cargo= $cargo;
+        $this->documento = $documento;
     }
 
- 	  public function getPeriodoInicio()
+    public function getCargo()
+    {
+
+        return $this->cargo;
+    }
+
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
+    }
+
+    public function getPeriodoInicio()
     {
         return $this->periodoInicio;
     }
 
-  public function setPeriodoInicio($periodoInicio)
+    public function setPeriodoInicio($periodoInicio)
     {
         $this->periodoInicio = $periodoInicio;
     }
@@ -44,8 +47,8 @@
         return $this->periodoFin;
     }
 
-  public function setPeriodoFin($periodoFin)
+    public function setPeriodoFin($periodoFin)
     {
         $this->periodoFin = $periodoFin;
     }
- }
+}

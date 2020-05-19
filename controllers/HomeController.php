@@ -14,19 +14,21 @@ class HomeController extends Controller
     public function actionIndex()
     {
         $datos = ["titulo" => "Home"];
-        $this->view('gerente/home', $datos);
+        $this->view('home', $datos);
     }
 
-    public function actionContrato()
+    public function actionContrato($param = null)
     {
-        $datos = ["titulo" => "Contrato"];
-        $this->view('gerente/contrato', $datos);
+        $datos = ["titulo" => "Contrato",
+                    "dato" => $param];
+
+        $this->view('contrato', $datos);
     }
 
     public function actionProyecto()
     {
         $datos = ["titulo" => "Proyectos"];
-        $this->view('gerente/proyecto', $datos);
+        $this->view('proyecto', $datos);
     }
 
     public function actionRegistrar()
@@ -68,7 +70,7 @@ class HomeController extends Controller
                 "listTipoDocumentos" => $this->obtenerTiposDocumentos(),
                 "listTiposPersonas" => $this->obtenerTiposPersonas()
             ];
-            $this->view('gerente/registrarPersona', $datos);
+            $this->view('registrarPersona', $datos);
         }
     }
 
@@ -90,6 +92,7 @@ class HomeController extends Controller
     function actionLogout()
     {
         $userSession = new UserSession();
+        $userSession->startSession();
         $userSession->closeSession();
         header("location:" . constant('URL'));
     }

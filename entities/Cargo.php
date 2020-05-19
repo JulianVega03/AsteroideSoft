@@ -3,19 +3,19 @@
 
 class Cargo
 {
-	
- private $id;
- private $nombre;
- private $descripcion;
+
+    private $id;
+    private $nombre;
+    private $descripcion;
 
 
 
- public function getNombre()
+    public function getNombre()
     {
         return $this->nombre;
     }
 
-  public function setNombre($nombre)
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
@@ -25,7 +25,7 @@ class Cargo
         return $this->id;
     }
 
-  public function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -35,10 +35,8 @@ class Cargo
         return $this->descripcion;
     }
 
-  public function setDescriocion($descripcion)
+    public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
 }
-
-
