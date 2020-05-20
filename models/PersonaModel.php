@@ -4,14 +4,13 @@ require_once 'entities/Persona.php';
 class PersonaModel extends Model{
 
         private $db;
-        private $persona;
+        private $person;
 
     function __construct()
     {
         $this->persona = new Persona();
         $this->db = new Database();
     }
-
 
     public function insertar($persona){
         
@@ -33,7 +32,6 @@ class PersonaModel extends Model{
             return false;
         }
     }
-
 
     public function userExists($user, $pass){
 

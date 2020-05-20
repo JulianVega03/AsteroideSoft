@@ -1,6 +1,8 @@
 <?php
 
-define ('URL','http://localhost:9000/PHP-MVC-master/');
+
+define ('URL','http://localhost/PHP-MVC/');
+
 define('HOST','localhost');
 define('DB','integrador');
 define('USER','root');

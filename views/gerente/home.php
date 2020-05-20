@@ -18,6 +18,9 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
+                                        Select
+                                    </th>
+                                    <th>
                                         Nombre
                                     </th>
                                     <th>
@@ -33,6 +36,9 @@
                                 <tbody>
                                     <tr>
                                         <td>
+                                            <input type="checkbox">
+                                        </td>
+                                        <td>
                                             Dakota Rice
                                         </td>
                                         <td>
@@ -46,6 +52,9 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                            <input type="checkbox">
+                                        </td>
                                         <td>
                                             Minerva Hooper
                                         </td>
@@ -60,6 +69,9 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                            <input type="checkbox">
+                                        </td>
                                         <td>
                                             Sage Rodriguez
                                         </td>
@@ -74,6 +86,9 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                            <input type="checkbox">
+                                        </td>
                                         <td>
                                             Philip Chaney
                                         </td>
@@ -88,6 +103,9 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                            <input type="checkbox">
+                                        </td>
                                         <td>
                                             Doris Greene
                                         </td>
@@ -102,6 +120,9 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                            <input type="checkbox">
+                                        </td>
                                         <td>
                                             Mason Porter
                                         </td>
@@ -116,6 +137,9 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                            <input type="checkbox">
+                                        </td>
                                         <td>
                                             Jon Porter
                                         </td>
