@@ -7,9 +7,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form action="<?=URL?>proyectos/eliminar/<?=$proyecto->getCodigo()?>" method="get">
                         <div class="modal-body text-center">
-                            ¿Estas Seguro de Eliminar el Proyecto "Softbuild 2.0"?
+                            ¿Estas Seguro de Eliminar el Proyecto "<?=$proyecto->getNombre()?>"?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

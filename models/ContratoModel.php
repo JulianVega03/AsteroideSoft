@@ -22,7 +22,24 @@ class ContratoModel extends Model{
     }
 
     public function obtenerTodos(){
-       
+        $contratos = [];
+        try{
+         $query = $this->db->connect()->query("SELECT * FROM contrato");
+        
+         while($row = $query->fetch()){
+             $contrato = new Contrato();
+             $contrato->setCodigo($row['codigo']);
+             $contrato->setTipo($row['tipo']);
+             $contrato->setPersona($row['persona']);
+             $contrato->setFechaFirma($row['fecha_firma']);
+             $contrato->setValor($row['valor']);
+             $contrato->setEstado($row['estado']);
+             array_push($contratos, $contrato);
+         }
+         return $contratos;
+     }catch(PDOException $e){
+         return [];
+        }
     }
 
 }

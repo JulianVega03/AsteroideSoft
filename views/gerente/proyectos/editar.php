@@ -7,40 +7,45 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form action="<?=URL?>proyectos/editar" method="post">
                 <div class="modal-body">
                     <div class="card-body">
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="number">Código</label>
-                                <input type="number" class="form-control" id="number" value="057">
+                                <input type="number" class="form-control" id="number" name="codigo" value="<?= $proyecto->getCodigo() ?>" readonly>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="contrato">Contrato</label>
-                                <!-- <select id="contrato" class="form-control">
-                                    <option selected value="1">1</option>
-                                    <option value="2">2</option>
-                                </select> -->
+                                <select id="contrato" class="form-control" name="contrato">
+                                    <?php
+                                    foreach ($listaContratos as $contratos) {
+                                    ?>
+                                        <option value="<?= $contratos->getCodigo() ?>"><?= $contratos->getCodigo() ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Softbuild 2.0">
+                            <input type="text" class="form-control" id="nombre" placeholder="Softbuild 2.0" name="nombre" value="<?= $proyecto->getNombre() ?>">
                         </div>
                         <div class="form-group">
                             <label for="presupuesto">Presupuesto</label>
-                            <input type="double" class="form-control" id="presupuesto" placeholder="99.00">
+                            <input type="double" class="form-control" id="presupuesto" placeholder="99.00" name="presupuesto" value="<?= $proyecto->getPresupuesto() ?>">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
                                 <label for="fecha">Fecha Inicio</label>
-                                <input type="date" class="form-control" id="fecha">
+                                <input type="date" class="form-control" id="fecha" value="<?= $proyecto->getPeriodoInicio()?>" name="periodoInicio">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <label for="duracion">Duración</label>
-                                <input type="number" class="form-control" id="duracion" value="65">
+                                <input type="number" class="form-control" id="duracion" value="<?= $proyecto->getDuracion() ?>" name="duracion">
                             </div>
                         </div>
                     </div>

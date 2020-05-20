@@ -65,7 +65,7 @@ class Proyecto
 
   public function getDuracion()
   {
-    return $this->duraccion;
+    return $this->duracion;
   }
 
   public function setDuracion($duracion)
