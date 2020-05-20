@@ -12,11 +12,18 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> Mis Proyectos</h4>
+                        <div class="card-header-icons">
+                            <button class="add"><i class="fas fa-plus fa-lg"></i></button>
+                            <button class="edit"><i class="fas fa-edit fa-lg"></i></button>
+                            <button class="delete"><i class="fas fa-trash fa-lg"></i></button>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
+                                    <th>
+                                    </th>
                                     <th>
                                         Nombre
                                     </th>
@@ -32,6 +39,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Dakota Rice
                                         </td>
@@ -46,6 +54,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Minerva Hooper
                                         </td>
@@ -60,6 +69,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Sage Rodriguez
                                         </td>
@@ -74,6 +84,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Philip Chaney
                                         </td>
@@ -88,6 +99,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Doris Greene
                                         </td>
@@ -102,6 +114,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Mason Porter
                                         </td>
@@ -116,6 +129,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Jon Porter
                                         </td>
@@ -203,6 +217,32 @@
             </div>
         </div>
     </div>
+    <script>
+        $('.edit').prop("disabled", true);
+        $('.delete').prop("disabled", true);
+        var checks = $(':checkbox');
+        for (const check of checks) {
+            check.addEventListener('click', actualizar);
+        }
+
+        function actualizar() {
+            var checks = $(':checked');
+            if(checks.length == 0) {
+                $('.edit').prop("disabled", true);
+                $('.delete').prop("disabled", true);
+                $('.add').prop("disabled", false);
+            } else if(checks.length == 1) {
+                $('.add').prop("disabled", true);
+                $('.edit').prop("disabled", false);
+                $('.delete').prop("disabled", false);
+            } else {
+                $('.add').prop("disabled", true);
+                $('.edit').prop("disabled", true);
+                $('.delete').prop("disabled", false);
+            }
+        }
+
+    </script>
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 </div>
 <?php require_once 'views/gerente/templates/scripts.php'; ?>

@@ -1,0 +1,24 @@
+.card-header {
+    display: flex;
+}
+
+.card-header-icons {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+}
+
+i {
+    color:#51cbce !important;;
+}
+
+button {
+    border: none;
+    background-color: white;
+    margin-left: 1em;
+}
+
+button:disabled {
+    opacity: 0.35;
+}

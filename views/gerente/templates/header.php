@@ -13,11 +13,17 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Font awesome -->
+  <script src="https://kit.fontawesome.com/1f0779131f.js" crossorigin="anonymous"></script>
+  <!-- Jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- CSS Files -->
   <link href="<?=URL?>public/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="<?=URL?>public/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?=URL?>public/assets/demo/demo.css" rel="stylesheet" />
+  <!-- CSS CUSTOM  -->
+  <link href="<?=URL?>public/css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="">
