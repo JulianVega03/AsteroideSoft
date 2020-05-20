@@ -12,13 +12,18 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> Mis Proyectos</h4>
+                        <div class="card-header-icons">
+                            <button class="add" data-toggle="modal" data-target="#modelNuevoProyecto"><i class="fas fa-2x fa-plus fa-lg"></i></button>
+                            <button class="edit"><i class="fas fa-2x fa-edit fa-lg"></i></button>
+                            <button class="delete"><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Select
+
                                     </th>
                                     <th>
                                         Nombre
@@ -35,9 +40,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Dakota Rice
                                         </td>
@@ -52,9 +55,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Minerva Hooper
                                         </td>
@@ -69,9 +70,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Sage Rodriguez
                                         </td>
@@ -86,9 +85,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Philip Chaney
                                         </td>
@@ -103,9 +100,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Doris Greene
                                         </td>
@@ -120,9 +115,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Mason Porter
                                         </td>
@@ -137,9 +130,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    <td>
-                                            <input type="checkbox">
-                                        </td>
+                                        <td><input type="checkbox" class="form-control"></td>
                                         <td>
                                             Jon Porter
                                         </td>
@@ -160,6 +151,66 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modelNuevoProyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Proyecto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="card-body">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="number">Código</label>
+                                        <input type="number" class="form-control" id="number">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="contrato">Contrato</label>
+                                        <select id="contrato" class="form-control">
+                                            <option selected value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="increible proyecto">
+                                </div>
+                                <div class="form-group">
+                                    <label for="presupuesto">Presupuesto</label>
+                                    <input type="double" class="form-control" id="presupuesto" placeholder="99.00">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-7">
+                                        <label for="fecha">Fecha Inicio</label>
+                                        <input type="date" class="form-control" id="fecha">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="duracion">Duración</label>
+                                        <input type="number" class="form-control" id="duracion">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
 
         <div class="row">
             <div class="col-md-12">
@@ -221,13 +272,38 @@
                         <hr />
                         <div class="card-stats">
                             <i class="fa fa-check"></i> Data information certified
-                            <a href="<?=URL?>home/registrarProyecto">Registrar</a>
+                            <a href="<?= URL ?>home/registrarProyecto">Registrar</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $('.edit').prop("disabled", true);
+        $('.delete').prop("disabled", true);
+        var checks = $(':checkbox');
+        for (const check of checks) {
+            check.addEventListener('click', actualizar);
+        }
+
+        function actualizar() {
+            var checks = $(':checked');
+            if (checks.length == 0) {
+                $('.edit').prop("disabled", true);
+                $('.delete').prop("disabled", true);
+                $('.add').prop("disabled", false);
+            } else if (checks.length == 1) {
+                $('.add').prop("disabled", true);
+                $('.edit').prop("disabled", false);
+                $('.delete').prop("disabled", false);
+            } else {
+                $('.add').prop("disabled", true);
+                $('.edit').prop("disabled", true);
+                $('.delete').prop("disabled", false);
+            }
+        }
+    </script>
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 </div>
 <?php require_once 'views/gerente/templates/scripts.php'; ?>

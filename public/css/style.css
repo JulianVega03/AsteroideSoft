@@ -201,7 +201,3 @@ input {
 .contenedor.right-panel-active .overlay {
     transform: translateX(50%);
 }
-
-.contenedor.right-panel-active .overlay-left {
-    transform: translateX(0);
-}
