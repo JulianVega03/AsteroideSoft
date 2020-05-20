@@ -7,8 +7,8 @@ class Proyecto{
 	private $contrato;
 	private $periodoInicio;
 	private $duraccion;
-	private $presupuesto;
-
+  private $presupuesto;
+ 
 
 	public function getCodigo(){
 

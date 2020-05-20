@@ -7,6 +7,7 @@ class  Actividad
     private $nombre;
     private $duracion;
     private $etapa;
+    
 
 
     public function getId()
