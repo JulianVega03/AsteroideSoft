@@ -13,13 +13,14 @@
                     <div class="card-header">
                         <h4 class="card-title"> Mis Proyectos</h4>
                         <div class="card-header-icons">
-                            <button class="add" data-toggle="modal" data-target="#modelNuevoProyecto"><i class="fas fa-2x fa-plus fa-lg"></i></button>
-                            <button class="edit"><i class="fas fa-2x fa-edit fa-lg"></i></button>
-                            <button class="delete"><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                            <button class="add" data-toggle="modal" data-target="#modalNuevoProyecto"><i class="fas fa-2x fa-plus fa-lg"></i></button>
+                            <button class="edit" data-toggle="modal" data-target="#modalEditarProyecto"><i class="fas fa-2x fa-edit fa-lg"></i></button>
+                            <button class="delete" data-toggle="modal" data-target="#modalEliminarProyecto"><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
@@ -152,67 +153,16 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modelNuevoProyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Proyecto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form>
-                        <div class="modal-body">
-                            <div class="card-body">
+        <!-- Modal New-->
+        <?php require_once 'views/gerente/proyectos/nuevo.php'; ?>
 
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="number">Código</label>
-                                        <input type="number" class="form-control" id="number">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="contrato">Contrato</label>
-                                        <select id="contrato" class="form-control">
-                                            <option selected value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="increible proyecto">
-                                </div>
-                                <div class="form-group">
-                                    <label for="presupuesto">Presupuesto</label>
-                                    <input type="double" class="form-control" id="presupuesto" placeholder="99.00">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-7">
-                                        <label for="fecha">Fecha Inicio</label>
-                                        <input type="date" class="form-control" id="fecha">
-                                    </div>
+        <!-- Modal Delete-->
+        <?php require_once 'views/gerente/proyectos/eliminar.php'; ?>
 
-                                    <div class="form-group col-md-3">
-                                        <label for="duracion">Duración</label>
-                                        <input type="number" class="form-control" id="duracion">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Crear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <!-- Modal Edit-->
+        <?php require_once 'views/gerente/proyectos/editar.php'; ?>
 
-
-
-
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
@@ -277,7 +227,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <script>
         $('.edit').prop("disabled", true);

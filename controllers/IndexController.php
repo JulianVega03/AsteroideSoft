@@ -20,7 +20,7 @@ class IndexController extends Controller
     {
         $userSession = new UserSession();
         $userSession->startSession();
-        
+
         if (isset($_POST['email']) && isset($_POST['pass'])) {
             $userForm = $_POST['email'];
             $passForm = $_POST['pass'];
@@ -29,11 +29,19 @@ class IndexController extends Controller
                 $userSession->setCurrentUser($userForm);
                 $this->personaModel->setUser($userForm);
 
-                header("Location:" . constant('URL') . "home");
+                header("Location:" . constant('URL') . "proyectos");
             } else {
                 $loginResponse = "Nombre de usuario y/o password es incorrecto";
                 include_once 'views/index.php';
             }
         }
+    }
+
+    function actionLogout()
+    {
+        $userSession = new UserSession();
+        $userSession->startSession();
+        $userSession->closeSession();
+        header("location:" . constant('URL'));
     }
 }

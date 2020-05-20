@@ -89,13 +89,7 @@ class HomeController extends Controller
         return $lista;
     }
 
-    function actionLogout()
-    {
-        $userSession = new UserSession();
-        $userSession->startSession();
-        $userSession->closeSession();
-        header("location:" . constant('URL'));
-    }
+    
 
     public function actionRegistrarProyecto()
     {

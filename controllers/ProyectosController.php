@@ -12,7 +12,7 @@ class ProyectosController extends Controller
     public function actionIndex()
     {
         $datos = ["listProyectos" => $this->proyectoModel->obtenerTodos()];
-        $this->view('proyectos/listar');
+        $this->view('proyectos/listar',$datos);
     }
 
 

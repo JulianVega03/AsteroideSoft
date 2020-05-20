@@ -39,7 +39,7 @@ class ProyectoModel extends Model{
              $proyecto->setCodigo($row['codigo']);
              $proyecto->setNombre($row['nombre']);
              $proyecto->setContrato($row['contrato']);
-             $proyecto->setPeriodoInicio($row['periodoInicio']);
+             $proyecto->setPeriodoInicio($row['fecha_inico']);
              $proyecto->setDuracion($row['duracion']);
              $proyecto->setPresupuesto($row['presupuesto']);
              array_push($proyectos, $proyecto);

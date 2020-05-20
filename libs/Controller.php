@@ -24,7 +24,7 @@ class Controller
 
                 require_once 'views/gerente/' . $view . '.php';
             } else {
-                require_once 'views/gerente/home.php';
+                require_once 'views/gerente/proyectos/listar.php';
             }
         } else {
             if (file_exists('views/' . $view . '.php')) {
