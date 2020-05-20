@@ -12,7 +12,6 @@ class PersonaModel extends Model{
         $this->db = new Database();
     }
 
-
     public function insertar($persona){
         
         $query = $this->db->connect()->prepare('INSERT INTO persona (documento, tipo_documento, nombre, apellido, correo, contrasena, direccion, telefono) 
@@ -33,7 +32,6 @@ class PersonaModel extends Model{
             return false;
         }
     }
-
 
     public function userExists($user, $pass){
 
