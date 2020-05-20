@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-*{
+* {
     box-sizing: border-box;
 }
-body{
-    font-family: 'Montserrat',sans-serif;
+
+body {
+    font-family: 'Montserrat', sans-serif;
     background: #f6f5f7;
     display: flex;
     flex-direction: column;
@@ -14,32 +14,31 @@ body{
     margin: -20px 0 50px;
 }
 
-h1{
+h1 {
     font-weight: bold;
     margin: 0;
 }
 
-p{
+p {
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
-
 }
 
-span{
+span {
     font-size: 12px;
 }
 
-a{
+a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
 }
 
-.contenedor{
+.contenedor {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -50,7 +49,7 @@ a{
     min-height: 480px;
 }
 
-button{
+button {
     border-radius: 20px;
     border: 1px solid #ff4b2b;
     background-color: #ff4b2b;
@@ -63,20 +62,20 @@ button{
     transition: transform 80ms ease-in;
 }
 
-
-button:active{
+button:active {
     transform: scale(0.95);
 }
-button:focus{
+
+button:focus {
     outline: none;
 }
 
-button.ghost{
+button.ghost {
     background-color: transparent;
     border-color: #ffffff;
 }
 
-form{
+form {
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -87,7 +86,7 @@ form{
     text-align: center;
 }
 
-input{
+input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
@@ -95,10 +94,11 @@ input{
     width: 100%;
 }
 
-.social-contenedor{
+.social-contenedor {
     margin: 20px 0;
 }
-.social-contenedor a{
+
+.social-contenedor a {
     border: 1px solid #dddddd;
     border-radius: 50%;
     display: inline-flex;
@@ -109,23 +109,24 @@ input{
     width: 40px;
 }
 
-.form-contenedor{
+.form-contenedor {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
-.ingresar-contenedor{
+
+.ingresar-contenedor {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.registrarse-contenedor{
+.registrarse-contenedor {
     left: 0;
     width: 50%;
     opacity: 0;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .overlay-contenedor {
@@ -154,6 +155,7 @@ input{
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
 }
+
 .container.right-panel-active .overlay {
     transform: translateX(50%);
 }
@@ -172,6 +174,7 @@ input{
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
 }
+
 .overlay-right {
     right: 0;
     transform: translateX(0);
@@ -181,22 +184,24 @@ input{
     transform: translateX(-20%);
 }
 
-.contenedor.right-panel-active .ingresar-contenedor{
+.contenedor.right-panel-active .ingresar-contenedor {
     transform: translateX(100%);
 }
-.contenedor.right-panel-active .overlay-contenedor{
+
+.contenedor.right-panel-active .overlay-contenedor {
     transform: translateX(-100%);
 }
 
-.contenedor.right-panel-active .registrarse-contenedor{
+.contenedor.right-panel-active .registrarse-contenedor {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
 }
-.contenedor.right-panel-active .overlay{
+
+.contenedor.right-panel-active .overlay {
     transform: translateX(50%);
 }
-.contenedor.right-panel-active .overlay-left{
+
+.contenedor.right-panel-active .overlay-left {
     transform: translateX(0);
 }
-
