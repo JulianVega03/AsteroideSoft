@@ -19,8 +19,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <label for=""> <p>perrras</p></label>
-                        <input type="text"  >
+                        <label for=""> <p>Nombre</p></label>
+                        <input type="text">
+                        <label for=""><p>Apellido</p></label>
+                        <input type="text">
                         
                     </div>
                 </div>
