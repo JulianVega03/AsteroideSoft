@@ -49,7 +49,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-rotate" href="javascript:;">
+                    <a class="nav-link btn-rotate" href="<?=URL?>index/logout">
                         <i class="nc-icon nc-settings-gear-65"></i>
                         <p>
                             <span class="d-lg-none d-md-block">Account</span>

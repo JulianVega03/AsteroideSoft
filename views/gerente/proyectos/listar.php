@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table text-center">
                                 <thead class=" text-primary">
                                     <th>
 
@@ -37,8 +37,14 @@
                                     <th>
                                         Contrato
                                     </th>
-                                    <th class="text-right">
+                                    <th >
                                         Duración
+                                    </th>
+                                    <th >
+                                        Estado
+                                    </th>
+                                    <th >
+                                        Ingresar
                                     </th>
                                 </thead>
                                 <tbody>
@@ -46,7 +52,7 @@
                                     foreach ($listProyectos as $proyecto) {
                                     ?>
                                         <tr>
-                                            <td><input type="checkbox" class="form-control"></td>
+                                            <td><input type="checkbox" ></td>
                                             <td>
                                                 <?= $proyecto->getNombre() ?>
                                             </td>
@@ -59,8 +65,14 @@
                                             <td>
                                                 <?= $proyecto->getContrato() ?>
                                             </td>
-                                            <td class="text-right">
+                                            <td >
                                                 <?= $proyecto->getDuracion() ?>
+                                            </td>
+                                            <td >
+                                                Barra de color
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary">Acceder</button>
                                             </td>
                                         </tr>
 
