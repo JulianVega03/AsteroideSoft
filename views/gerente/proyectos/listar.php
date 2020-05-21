@@ -37,13 +37,13 @@
                                     <th>
                                         Contrato
                                     </th>
-                                    <th >
+                                    <th>
                                         Duración
                                     </th>
-                                    <th >
+                                    <th>
                                         Estado
                                     </th>
-                                    <th >
+                                    <th>
                                         Ingresar
                                     </th>
                                 </thead>
@@ -52,7 +52,7 @@
                                     foreach ($listProyectos as $proyecto) {
                                     ?>
                                         <tr>
-                                            <td><input type="checkbox" ></td>
+                                            <td><input type="checkbox"></td>
                                             <td>
                                                 <?= $proyecto->getNombre() ?>
                                             </td>
@@ -65,11 +65,13 @@
                                             <td>
                                                 <?= $proyecto->getContrato() ?>
                                             </td>
-                                            <td >
+                                            <td>
                                                 <?= $proyecto->getDuracion() ?>
                                             </td>
-                                            <td >
-                                                Barra de color
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-primary">Acceder</button>
@@ -86,6 +88,40 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> Estados de un Proyecto</h4>
+                    </div>
+                    <div class="card-body text-center pb-5">
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                En progreso
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                Detenido
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                Atrasado
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                Cancelado
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
