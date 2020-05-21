@@ -51,6 +51,12 @@
               <p>Calendario</p>
             </a>
           </li>
+          <li>
+            <a href="<?=URL?>persona">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Personal</p>
+            </a>
+          </li>
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="nc-icon nc-spaceship"></i>
