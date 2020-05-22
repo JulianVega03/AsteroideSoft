@@ -22,7 +22,7 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="<?=URL?>Contratos/index">
               <i class="nc-icon nc-diamond"></i>
               <p>Contratos</p>
             </a>

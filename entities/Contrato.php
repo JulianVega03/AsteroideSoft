@@ -35,7 +35,7 @@ class Contrato
 
 	public function getPersona(){
 
-		return $this->Persona;
+		return $this->persona;
 	}
 
 	public function setPersona($persona){
