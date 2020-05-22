@@ -90,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> Estados de un Proyecto</h4>
@@ -99,24 +99,32 @@
                         <div class="row">
                             <div class="col-md-3">
                                 En progreso
+                                <br>
+                                <hr>
                                 <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 Detenido
+                                <br>
+                                <hr>
                                 <div class="progress">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 Atrasado
+                                <br>
+                                <hr>
                                 <div class="progress">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 Cancelado
+                                <br>
+                                <hr>
                                 <div class="progress">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -155,10 +163,38 @@
         </div>
 
 
+
+
     </div>
     <script>
-        // $('.edit').prop("disabled", true);
-        // $('.delete').prop("disabled", true);
+        $(document).ready(function() {
+            <?php
+            if (isset($_GET['e'])) {
+                if ($_GET['e'] == "success") {
+            ?>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Trabajo realizado con exito',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                <?php
+                } else if ($_GET['e'] == "error") {
+                ?>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'ha Ocurrido Un Error!',
+                        footer: '<a href>Intentalo Nuevamente</a>'
+                    })
+            <?php
+                }
+            }
+            ?>
+        });
+
+
+
         var checks = $(':checkbox');
 
         for (const check of checks) {
@@ -201,6 +237,14 @@
                 buttonDelete.setAttribute("data-target", "#modalEliminarProyectos");
             }
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            var activo = "contratos";
+            console.log("este :  " + activo);
+            var elemento = document.querySelector("#" + activo);
+            elemento.addClass('active');
+        });
     </script>
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 </div>

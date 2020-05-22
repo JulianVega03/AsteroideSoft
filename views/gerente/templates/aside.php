@@ -16,13 +16,13 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="<?=URL?>proyectos">
+            <a href="<?=URL?>proyectos" id="proyectos">
               <i class="nc-icon nc-bank"></i>
               <p>Proyectos</p>
             </a>
           </li>
           <li>
-            <a href="<?=URL?>contratos/">
+            <a href="<?=URL?>contratos" id="contratos">
               <i class="nc-icon nc-diamond"></i>
               <p>Contratos</p>
             </a>
@@ -59,4 +59,4 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> 

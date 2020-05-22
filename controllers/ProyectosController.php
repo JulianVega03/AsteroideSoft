@@ -13,6 +13,7 @@ class ProyectosController extends Controller
     public function actionIndex()
     {
         $datos = [
+            "titulo" => "Mis Proyectos",
             "listProyectos" => $this->listar(),
             "listaContratos" => $this->obtenerTodosContratos()
         ];
@@ -34,10 +35,14 @@ class ProyectosController extends Controller
 
     public function actionEliminar($param = null)
     {
-        for ($i = 0; $i < count($param); $i++) {
-            if ($this->proyectoModel->eliminar($param[$i])) {
-                header('location:' . URL . 'proyectos');
+        if ($param != null) {
+            for ($i = 0; $i < count($param); $i++) {
+                if ($this->proyectoModel->eliminar($param[$i])) {
+                    header('location:' . URL . 'proyectos?e=success');
+                }
             }
+        } else {
+            header('location:' . URL . 'proyectos');
         }
     }
 
@@ -59,14 +64,14 @@ class ProyectosController extends Controller
 
 
                 if ($this->proyectoModel->insertar($project)) {
-                    header('location:' . URL . 'proyectos');
+                    header('location:' . URL . 'proyectos?e=success');
                 } else {
-                    echo "Hubo un error";
+                    header('location:' . URL . 'proyectos?e=error');
                 }
             }
         } else {
             $datos = ["titulo" => "Formulario de Registro"];
-            $this->view('proyectos/nuevo', $datos);
+            $this->view('proyectos/', $datos);
         }
     }
 
@@ -85,14 +90,12 @@ class ProyectosController extends Controller
 
                 $project = new Proyecto($codigo, $nombre, $contrato, $periodoInicio, $duracion, $presupuesto);
 
-                echo var_dump($project);
                 if ($this->proyectoModel->actualizar($project)) {
-                    header('location:' . URL . 'proyectos');
+                    header('location:' . URL . 'proyectos?e=success');
                 } else {
-                    echo "Hubo un error";
+                    header('location:' . URL . 'proyectos?e=error');
                 }
             }
         }
     }
-
 }

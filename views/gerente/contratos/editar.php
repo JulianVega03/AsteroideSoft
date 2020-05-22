@@ -12,11 +12,11 @@
             <div class="form-row">
                <div class="form-group col-md-4">
                <label for="codigo">Código del contrato</label>
-               <input type="number" min="0" class="form-control" id="codigo" name="codigo" value="<?=$contrato->getCodigo()?>" readonly>
+               <input type="number" min="0" class="form-control" id="codigoEdit" name="codigo" value="<?=$contrato->getCodigo()?>" readonly>
                </div>
                <div class="form-group col-md-4">
                  <label for="tipoContrato">Tipo de contrato</label>
-                 <select name="tipo" id="tipoContrato" class="form-control">
+                 <select name="tipo" id="tipoContratoEdit" class="form-control">
                  <?php
                  foreach($listTipoContrato as $tipoContrato){
                  ?>
@@ -32,19 +32,19 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="personas">Persona Responsable</label>
-                  <select name="persona" id="personas" class="form-control">
+                  <select name="persona" id="personasEdit" class="form-control">
                     <option value="">Angel</option>
                   </select>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="fecha">Fecha de firma</label>
-                  <input type="date" class="form-control" name="fecha_firma" id="fecha" value="<?=$contrato->getFechaFirma()?>" >
+                  <input type="date" class="form-control" name="fecha_firma" id="fechaEdit" value="<?=$contrato->getFechaFirma()?>" >
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                   <label for="valor">Valor del contrato</label>
-                  <input type="number" class="form-control" min="0" id="valor" name="valor" value="<?=$contrato->getValor()?>">
+                  <input type="number" class="form-control" min="0" id="valorEdit" name="valor" value="<?=$contrato->getValor()?>">
                 </div>
             </div>
           </form>

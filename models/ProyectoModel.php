@@ -41,7 +41,7 @@ class ProyectoModel extends Model
                 'nombre'=> $proyecto->getNombre(),
                 'presupuesto'=> $proyecto->getPresupuesto(),
                 'fecha_inicio'=> $proyecto->getPeriodoInicio(),
-                'duracion'=> $proyecto->getDuracion(),
+                'duracion'=> $proyecto->getDuracion()
             ]);
             return true;
         }catch(PDOException $e){

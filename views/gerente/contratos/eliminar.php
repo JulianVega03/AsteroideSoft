@@ -9,7 +9,7 @@
             </div>
             <form action="<?= URL ?>proyectos/eliminar/" method="get" class="form-eliminar">
                 <div class="modal-body text-center">
-                    <p class="text-eliminar">¿Estas Seguro de Eliminar el Proyecto?</p>
+                    <p class="text-eliminar">¿Estas Seguro de Eliminar el Contrato?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

@@ -10,7 +10,7 @@ class App
     public function __construct()
     {
         $url = $this->parseUrl();
-
+        
         $controllerName = ucfirst(strtolower($url[0])) . "Controller";
         if (file_exists("controllers/" . $controllerName . ".php")) {
             $this->controller = $controllerName;
