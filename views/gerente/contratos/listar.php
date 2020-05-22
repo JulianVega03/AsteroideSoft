@@ -12,7 +12,7 @@
             <!--Creacioń card-->
          <div class="card">
             <div class="card-header">
-                        <h4 class="card-title"> Contratos</h4>
+                        <h4 class="card-title"> Mis Contratos</h4>
                         <div class="card-header-icons">
                             <button class="add" data-toggle="modal" data-target="#ContratoNuevo"><i class="fas fa-2x fa-plus fa-lg"></i></button>
                             <button class="edit" data-toggle="modal" data-target="#ContratoEditar"><i class="fas fa-2x fa-edit fa-lg"></i></button>
