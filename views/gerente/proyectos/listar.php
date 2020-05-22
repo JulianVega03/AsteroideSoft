@@ -14,8 +14,8 @@
                         <h4 class="card-title"> Mis Proyectos</h4>
                         <div class="card-header-icons">
                             <button class="add" data-toggle="modal" data-target="#modalNuevoProyecto"><i class="fas fa-2x fa-plus fa-lg"></i></button>
-                            <button class="edit" data-toggle="modal" data-target="#modalEditarProyecto"><i class="fas fa-2x fa-edit fa-lg"></i></button>
-                            <button class="delete" data-toggle="modal" data-target="#modalEliminarProyecto"><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                            <button class="edit" data-toggle="modal" data-target="#modalEditarProyecto" disabled><i class="fas fa-2x fa-edit fa-lg"></i></button>
+                            <button class="delete" data-toggle="modal" data-target="#modalEliminarProyecto" disabled><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -52,7 +52,7 @@
                                     foreach ($listProyectos as $proyecto) {
                                     ?>
                                         <tr>
-                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox" class="<?= $proyecto->getCodigo() ?>"></td>
                                             <td>
                                                 <?= $proyecto->getNombre() ?>
                                             </td>
@@ -74,15 +74,15 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary">Acceder</button>
+                                                <a type="button" href="" class="btn btn-primary">Acceder</a>
                                             </td>
                                         </tr>
 
                                         <!-- Modal Delete-->
-                                        <?php include_once 'views/gerente/proyectos/eliminar.php'; ?>
+                                        <?php include 'views/gerente/proyectos/eliminar.php'; ?>
 
                                         <!-- Modal Edit-->
-                                        <?php include_once 'views/gerente/proyectos/editar.php'; ?>
+                                        <?php include 'views/gerente/proyectos/editar.php'; ?>
 
                                     <?php } ?>
                                 </tbody>
@@ -90,13 +90,14 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> Estados de un Proyecto</h4>
                     </div>
-                    <div class="card-body text-center pb-5">
+                    <div class="card-body text-center pb-5 pt-5 pl-5 pr-5">
                         <div class="row">
-                            <div class="col-md-3 text-center">
+                            <div class="col-md-3">
                                 En progreso
                                 <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -127,18 +128,44 @@
             </div>
         </div>
 
-        <!-- Modal New-->
+        <!-- Modal New Project -->
         <?php require_once 'views/gerente/proyectos/nuevo.php'; ?>
+
+        <!-- Modal - Eliminar varios al tiempo  -->
+        <div class="modal fade" id="modalEliminarProyectos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Proyecto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="" method="get" class="form-eliminar-varios">
+                        <div class="modal-body text-center">
+                            <p class="text-eliminar">¿Estas Seguro de Eliminar Estos Proyectos?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
     </div>
     <script>
-        $('.edit').prop("disabled", true);
-        $('.delete').prop("disabled", true);
+        // $('.edit').prop("disabled", true);
+        // $('.delete').prop("disabled", true);
         var checks = $(':checkbox');
+
         for (const check of checks) {
             check.addEventListener('click', actualizar);
         }
+
+        var cadena = "<?= URL ?>proyectos/eliminar/";
 
         function actualizar() {
             var checks = $('tbody > tr > td > :checked');
@@ -151,10 +178,27 @@
                 $('.add').prop("disabled", true);
                 $('.edit').prop("disabled", false);
                 $('.delete').prop("disabled", false);
+
+                var selected = checks[0].className;
+                var buttonEdit = document.querySelector(".edit");
+                var buttonDelete = document.querySelector(".delete");
+                buttonEdit.setAttribute("data-target", "#modalEditarProyecto" + selected);
+                buttonDelete.setAttribute("data-target", "#modalEliminarProyecto" + selected);
             } else {
                 $('.add').prop("disabled", true);
                 $('.edit').prop("disabled", true);
                 $('.delete').prop("disabled", false);
+
+                var action = "<?= URL ?>proyectos/eliminar/";
+
+                for (const check of checks) {
+                    action = action + check.className + "/";
+                }
+                var formEliminar = document.querySelector(".form-eliminar-varios");
+                formEliminar.setAttribute("action", action);
+
+                var buttonDelete = document.querySelector(".delete");
+                buttonDelete.setAttribute("data-target", "#modalEliminarProyectos");
             }
         }
     </script>

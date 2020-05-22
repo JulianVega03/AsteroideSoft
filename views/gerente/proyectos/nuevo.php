@@ -43,11 +43,23 @@
                                 <input type="date" class="form-control" id="fecha" name="periodoInicio" required>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-5">
                                 <label for="duracion">Duración</label>
                                 <input type="number" class="form-control" id="duracion" name="duracion" required>
                             </div>
                         </div>
+                        <br>
+                        <hr>
+                        <!-- NO FUNCIONA AUN -->
+                        <div class="form-group col-md-12 ">
+                            <label for="">Asignar Lider de Proyecto</label>
+                            <select id="lider_proyecto" class="form-control" name="lider">
+                                <option value="">Julian Andres Becerra</option>
+                                <option value="">Angel Yesid Mondragon</option>
+                                <option value="">Frank Jean Gomez</option>
+                            </select>
+                        </div>
+                        <!-- /FIN -->
                     </div>
                 </div>
                 <div class="modal-footer">

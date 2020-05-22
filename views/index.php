@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="<?= URL ?>public/css/style.css">
+    <link rel="icon" type="image/png" href="<?= URL ?>public/assets/img/favicon.png">
     <script src="https://kit.fontawesome.com/e43617e4d2.js" crossorigin="anonymous"></script>
     <title>Inicio</title>
 </head>
@@ -16,8 +17,8 @@
         <div class="form-contenedor ingresar-contenedor">
             <form action="<?= URL ?>index/login" method="POST">
                 <h1>Ingresar</h1>
-                <?php 
-                if(isset($loginResponse)){
+                <?php
+                if (isset($loginResponse)) {
                     echo '<h5 style="color:red">';
                     echo $loginResponse;
                     echo '</h5>';

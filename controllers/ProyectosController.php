@@ -13,12 +13,33 @@ class ProyectosController extends Controller
     public function actionIndex()
     {
         $datos = [
-            "listProyectos" => $this->proyectoModel->obtenerTodos(),
+            "listProyectos" => $this->listar(),
             "listaContratos" => $this->obtenerTodosContratos()
         ];
         $this->view('proyectos/listar', $datos);
     }
 
+    public function listar()
+    {
+        return $this->proyectoModel->obtenerTodos();
+    }
+
+    public function obtenerTodosContratos()
+    {
+        $lista = [];
+        $contratoModel = new ContratoModel();
+        $lista = $contratoModel->obtenerTodos();
+        return $lista;
+    }
+
+    public function actionEliminar($param = null)
+    {
+        for ($i = 0; $i < count($param); $i++) {
+            if ($this->proyectoModel->eliminar($param[$i])) {
+                header('location:' . URL . 'proyectos');
+            }
+        }
+    }
 
     public function actionNuevo()
     {
@@ -49,18 +70,9 @@ class ProyectosController extends Controller
         }
     }
 
-    public function obtenerTodosContratos()
-    {
-        $lista = [];
-        $contratoModel = new ContratoModel();
-        $lista = $contratoModel->obtenerTodos();
-        return $lista;
-    }
-
     public function actionEditar()
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            
             if (isset($_POST['codigo'], $_POST['nombre'], $_POST['contrato'], $_POST['periodoInicio'],
             $_POST['duracion'], $_POST['presupuesto'])) {
 
@@ -83,16 +95,4 @@ class ProyectosController extends Controller
         }
     }
 
-    public function actionEliminar($param = null)
-    {
-        if ($this->proyectoModel->eliminar($param)) {
-            header('location:' . URL . 'proyectos');
-        } else {
-            echo "no se pudo eliminar";
-        }
-    }
-
-    public function actionActualizar()
-    {
-    }
 }
