@@ -18,12 +18,31 @@
                             <button class="delete" data-toggle="modal" data-target="#modalEliminarProyecto"><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
                     </div>
-                    <div class="card-body">
+                <div class="card-body">
+                    <form  class="formulario" action="" >
+                        <label for="">TIPO DE PERSONA</label> 
+                            <select name="select">
+                                 <option value="value1" selected>PERSONA NATURAL</option> 
+                                <option value="value2" >EMPLEADO</option>
+                            </select>
                         <label for=""> <p>Nombre</p></label>
                         <input type="text">
                         <label for=""><p>Apellido</p></label>
                         <input type="text">
-                        
+                        <label for="">Tipo de documento</label>
+                            <select name="select">
+                                <option value="value1" selected>C.C-Cedula</option> 
+                                <option value="value2" >PA-Pasaporte</option>
+                            </select>
+                        <label for="">Email</label>
+                        <input type="email" name="" id="">
+                        <label for="">Telefono</label>
+                        <input type="text">
+                        <label for="">Direccion</label>
+                        <input type="text">
+                        </form>
+                        <button style="background-color: #6dd5ed">REGISTRAR</button>
+
                     </div>
                 </div>
                 
@@ -39,3 +58,15 @@
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 </div>
 <?php require_once 'views/gerente/templates/scripts.php'; ?>
+
+
+
+
+
+<style>
+.formulario{
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+}
+</style>
