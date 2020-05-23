@@ -34,17 +34,21 @@ class ProyectoModel extends Model
     public function actualizar($proyecto)
     {
         $query = $this->db->connect()->prepare("UPDATE proyecto SET contrato = :contrato, nombre = :nombre, presupuesto = :presupuesto, fecha_inicio = :fecha_inicio, duracion = :duracion WHERE codigo = :codigo");
-        try{
+        try {
             $query->execute([
                 'codigo' => $proyecto->getCodigo(),
                 'contrato' => $proyecto->getContrato(),
-                'nombre'=> $proyecto->getNombre(),
-                'presupuesto'=> $proyecto->getPresupuesto(),
-                'fecha_inicio'=> $proyecto->getPeriodoInicio(),
-                'duracion'=> $proyecto->getDuracion()
+                'nombre' => $proyecto->getNombre(),
+                'presupuesto' => $proyecto->getPresupuesto(),
+                'fecha_inicio' => $proyecto->getPeriodoInicio(),
+                'duracion' => $proyecto->getDuracion()
             ]);
-            return true;
-        }catch(PDOException $e){
+            if ($query->rowCount()>0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
             return false;
         }
     }
@@ -52,12 +56,14 @@ class ProyectoModel extends Model
     public function eliminar($id)
     {
         $query = $this->db->connect()->prepare("DELETE FROM proyecto WHERE codigo = :id");
-        try{
-            $query->execute([
-                'id' => $id
-            ]);
-            return true;
-        }catch(PDOException $e){
+        try {
+            $query->execute(['id' => $id]);
+            if ($query->rowCount()>0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
             return false;
         }
     }
@@ -75,6 +81,7 @@ class ProyectoModel extends Model
                 $proyecto->setContrato($row['contrato']);
                 $proyecto->setPeriodoInicio($row['fecha_inicio']);
                 $proyecto->setDuracion($row['duracion']);
+                $proyecto->setEstado($row['estado']);
                 $proyecto->setPresupuesto($row['presupuesto']);
                 array_push($proyectos, $proyecto);
             }

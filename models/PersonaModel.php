@@ -1,10 +1,11 @@
 <?php
 require_once 'entities/Persona.php';
 
-class PersonaModel extends Model{
+class PersonaModel extends Model
+{
 
-        private $db;
-        private $person;
+    private $db;
+    private $person;
 
     function __construct()
     {
@@ -12,11 +13,12 @@ class PersonaModel extends Model{
         $this->db = new Database();
     }
 
-    public function insertar($persona){
-        
+    public function insertar($persona)
+    {
+
         $query = $this->db->connect()->prepare('INSERT INTO persona (documento, tipo_documento, nombre, apellido, correo, contrasena, direccion, telefono) 
                         VALUES(:docu, :tp_docu, :nombre, :apellido, :correo, :contra, :direc, :telf)');
-        try{
+        try {
             $query->execute([
                 'docu' => $persona->getDocumento(),
                 'tp_docu' => $persona->getTipo_documento(),
@@ -28,24 +30,72 @@ class PersonaModel extends Model{
                 'telf' => $persona->getTelefono()
             ]);
             return true;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             return false;
         }
     }
 
-    public function userExists($user, $pass){
+    public function ObtenerPorId($id)
+    {
+        $query = $this->db->connect()->prepare("SELECT * FROM persona WHERE documento = :documento");
+        try {
+            $query->execute(['documento' => $id]);
+
+            while ($row = $query->fetch()) {
+                $this->persona->setDocumento($row['documento']);
+                $this->persona->setTipo_Documento($row['tipo_documento']);
+                $this->persona->setNombre($row['nombre']);
+                $this->persona->setApellido($row['apellido']);
+                $this->persona->setCorreo($row['correo']);
+                $this->persona->setContrasena($row['contrasena']);
+                $this->persona->setDireccion($row['direccion']);
+                $this->persona->setTelefono($row['telefono']);
+            }
+            return $this->persona;
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
+    public function obtenerTodos()
+    {
+        $personas = [];
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM persona");
+
+            while ($row = $query->fetch()) {
+                $persona = new Persona();
+                $persona->setDocumento($row['documento']);
+                $persona->setTipo_Documento($row['tipo_documento']);
+                $persona->setNombre($row['nombre']);
+                $persona->setApellido($row['apellido']);
+                $persona->setCorreo($row['correo']);
+                $persona->setContrasena($row['contrasena']);
+                $persona->setDireccion($row['direccion']);
+                $persona->setTelefono($row['telefono']);
+                array_push($personas, $persona);
+            }
+            return $personas;
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+
+    public function userExists($user, $pass)
+    {
 
         $query = $this->db->connect()->prepare('SELECT * FROM persona WHERE correo = :user AND contrasena = :pass');
         $query->execute(['user' => $user, 'pass' => $pass]);
 
-        if($query->rowCount()){
+        if ($query->rowCount()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function setUser($user){
+    public function setUser($user)
+    {
         $query = $this->db->connect()->prepare('SELECT * FROM persona WHERE correo = :user');
         $query->execute(['user' => $user]);
 
@@ -61,9 +111,8 @@ class PersonaModel extends Model{
         }
     }
 
-    public function getNombre(){
+    public function getNombre()
+    {
         return $this->persona->getNombre();
     }
-
-
 }

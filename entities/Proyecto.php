@@ -8,16 +8,18 @@ class Proyecto
   private $contrato;
   private $periodoInicio;
   private $duracion;
+  private $estado;
   private $presupuesto;
 
 
-  function __construct($codigo = null, $nombre = null, $contrato = null, $periodoInicio = null, $duracion = null, $presupuesto = null)
+  function __construct($codigo = null, $nombre = null, $contrato = null, $periodoInicio = null, $duracion = null, $estado = null, $presupuesto = null)
   {
     $this->codigo = $codigo;
     $this->nombre = $nombre;
     $this->contrato = $contrato;
     $this->periodoInicio = $periodoInicio;
     $this->duracion = $duracion;
+    $this->estado = $estado;
     $this->presupuesto = $presupuesto;
   }
 
@@ -71,6 +73,16 @@ class Proyecto
   public function setDuracion($duracion)
   {
     $this->duracion = $duracion;
+  }
+
+  public function getEstado()
+  {
+    return $this->estado;
+  }
+
+  public function setEstado($estado)
+  {
+    $this->estado = $estado;
   }
 
   public function getPresupuesto()

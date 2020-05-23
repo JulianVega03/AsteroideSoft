@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminarProyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="modalEliminarContrato-<?=$contrato->getCodigo()?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,9 +7,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= URL ?>proyectos/eliminar/" method="get" class="form-eliminar">
+            <form action="<?= URL ?>contratos/eliminar/<?=$contrato->getCodigo()?>" method="get" class="form-eliminar">
                 <div class="modal-body text-center">
-                    <p class="text-eliminar">¿Estas Seguro de Eliminar el Contrato?</p>
+                    <p class="text-eliminar">¿Estas Seguro de Eliminar el Contrato "<?=$contrato->getCodigo()?>"?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

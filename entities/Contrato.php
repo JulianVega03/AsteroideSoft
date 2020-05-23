@@ -12,6 +12,15 @@ class Contrato
 	private $valor;
 	private $estado;
 
+	public function __construct($codigo = null, $tipo = null, $persona = null, $fechaFirma = null, $valor = null, $estado = null)
+	{
+		$this->codigo = $codigo;
+		$this->tipo = $tipo;
+		$this->persona = $persona;
+		$this->fechaFirma = $fechaFirma;
+		$this->valor = $valor;
+		$this->estado = $estado;
+	}
 
 	public function getCodigo(){
 

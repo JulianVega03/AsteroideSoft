@@ -5,19 +5,21 @@ class ProyectosController extends Controller
 
     private $proyectoModel;
 
+    private $datos;
+
     public function __construct()
     {
         $this->proyectoModel = $this->model('Proyecto');
-    }
-
-    public function actionIndex()
-    {
-        $datos = [
+        $this->datos = [
             "titulo" => "Mis Proyectos",
             "listProyectos" => $this->listar(),
             "listaContratos" => $this->obtenerTodosContratos()
         ];
-        $this->view('proyectos/listar', $datos);
+    }
+
+    public function actionIndex()
+    {
+        $this->view('proyectos/listar', $this->datos);
     }
 
     public function listar()
@@ -38,11 +40,19 @@ class ProyectosController extends Controller
         if ($param != null) {
             for ($i = 0; $i < count($param); $i++) {
                 if ($this->proyectoModel->eliminar($param[$i])) {
-                    header('location:' . URL . 'proyectos?e=success');
+                    if ($i == count($param) - 1) {
+                        $this->__construct();
+                        $this->datos += ["estado" => "success"];
+                        $this->view('proyectos/listar', $this->datos);
+                    }
+                } else {
+                    $this->__construct();
+                    $this->datos += ["estado" => "error"];
+                    $this->view('proyectos/listar', $this->datos);
                 }
             }
         } else {
-            header('location:' . URL . 'proyectos');
+            $this->view('proyectos/listar', $this->datos);
         }
     }
 
@@ -60,13 +70,17 @@ class ProyectosController extends Controller
                 $duracion = strtolower($_POST['duracion']);
                 $presupuesto = $_POST['presupuesto'];
 
-                $project = new Proyecto($codigo, $nombre, $contrato, $periodoInicio, $duracion, $presupuesto);
+                $project = new Proyecto($codigo, $nombre, $contrato, $periodoInicio, $duracion, "en progreso", $presupuesto);
 
 
                 if ($this->proyectoModel->insertar($project)) {
-                    header('location:' . URL . 'proyectos?e=success');
+                    $this->__construct();
+                    $this->datos += ["estado" => "success"];
+                    $this->view('proyectos/listar', $this->datos);
                 } else {
-                    header('location:' . URL . 'proyectos?e=error');
+                    $this->__construct();
+                    $this->datos += ["estado" => "error"];
+                    $this->view('proyectos/listar', $this->datos);
                 }
             }
         } else {
@@ -88,14 +102,21 @@ class ProyectosController extends Controller
                 $duracion = $_POST['duracion'];
                 $presupuesto = $_POST['presupuesto'];
 
-                $project = new Proyecto($codigo, $nombre, $contrato, $periodoInicio, $duracion, $presupuesto);
+                $project = new Proyecto($codigo, $nombre, $contrato, $periodoInicio, $duracion, "en progreso", $presupuesto);
 
                 if ($this->proyectoModel->actualizar($project)) {
-                    header('location:' . URL . 'proyectos?e=success');
+                    $this->__construct();
+                    $this->datos += ["estado" => "success"];
+                    $this->view('proyectos/listar', $this->datos);
                 } else {
-                    header('location:' . URL . 'proyectos?e=error');
+                    $this->__construct();
+                    $this->datos += ["estado" => "error"];
+                    $this->view('proyectos/listar', $this->datos);
                 }
             }
+        } else {
+            $this->__construct();
+            $this->view('proyectos/listar', $this->datos);
         }
     }
 }

@@ -11,11 +11,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> Mis Proyectos</h4>
+                        <h4 class="card-title"> Administración de Proyectos</h4>
                         <div class="card-header-icons">
                             <button class="add" data-toggle="modal" data-target="#modalNuevoProyecto"><i class="fas fa-2x fa-plus fa-lg"></i></button>
-                            <button class="edit" data-toggle="modal" data-target="#modalEditarProyecto" disabled><i class="fas fa-2x fa-edit fa-lg"></i></button>
-                            <button class="delete" data-toggle="modal" data-target="#modalEliminarProyecto" disabled><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                            <button class="edit" data-toggle="modal" data-target="#modalEditar" disabled><i class="fas fa-2x fa-edit fa-lg"></i></button>
+                            <button class="delete" data-toggle="modal" data-target="#modalEliminar" disabled><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -52,7 +52,7 @@
                                     foreach ($listProyectos as $proyecto) {
                                     ?>
                                         <tr>
-                                            <td><input type="checkbox" class="<?= $proyecto->getCodigo() ?>"></td>
+                                            <td><input type="checkbox" class="Proyecto-<?= $proyecto->getCodigo() ?>"></td>
                                             <td>
                                                 <?= $proyecto->getNombre() ?>
                                             </td>
@@ -69,9 +69,33 @@
                                                 <?= $proyecto->getDuracion() ?>
                                             </td>
                                             <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
+                                                <?php
+                                                if ($proyecto->getEstado() == "en progreso") {
+                                                ?>
+                                                    <div class="progress" data-toggle="tooltip" title="En Progreso">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                <?php
+                                                } else if ($proyecto->getEstado() == "cancelado") {
+                                                ?>
+                                                    <div class="progress" data-toggle="tooltip" title="Cancelado">
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                <?php
+                                                } else if ($proyecto->getEstado() == "detenido") {
+                                                ?>
+                                                    <div class="progress" data-toggle="tooltip" title="Detenido">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <div class="progress" data-toggle="tooltip" title="Atrasado">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
                                             </td>
                                             <td>
                                                 <a type="button" href="" class="btn btn-primary">Acceder</a>
@@ -104,6 +128,7 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+                                <br>
                             </div>
                             <div class="col-md-3">
                                 Detenido
@@ -112,6 +137,7 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+                                <br>
                             </div>
                             <div class="col-md-3">
                                 Atrasado
@@ -120,6 +146,7 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+                                <br>
                             </div>
                             <div class="col-md-3">
                                 Cancelado
@@ -128,6 +155,7 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+                                <br>
                             </div>
                         </div>
 
@@ -140,7 +168,7 @@
         <?php require_once 'views/gerente/proyectos/nuevo.php'; ?>
 
         <!-- Modal - Eliminar varios al tiempo  -->
-        <div class="modal fade" id="modalEliminarProyectos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal fade" id="modalEliminarVarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -149,7 +177,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="get" class="form-eliminar-varios">
+                    <form action="<?= URL ?>proyectos/eliminar/" method="get" class="form-eliminar-varios">
                         <div class="modal-body text-center">
                             <p class="text-eliminar">¿Estas Seguro de Eliminar Estos Proyectos?</p>
                         </div>
@@ -166,78 +194,7 @@
 
 
     </div>
-    <script>
-        $(document).ready(function() {
-            <?php
-            if (isset($_GET['e'])) {
-                if ($_GET['e'] == "success") {
-            ?>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Trabajo realizado con exito',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                <?php
-                } else if ($_GET['e'] == "error") {
-                ?>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'ha Ocurrido Un Error!',
-                        footer: '<a href>Intentalo Nuevamente</a>'
-                    })
-            <?php
-                }
-            }
-            ?>
-        });
-
-
-
-        var checks = $(':checkbox');
-
-        for (const check of checks) {
-            check.addEventListener('click', actualizar);
-        }
-
-        var cadena = "<?= URL ?>proyectos/eliminar/";
-
-        function actualizar() {
-            var checks = $('tbody > tr > td > :checked');
-            console.log(checks);
-            if (checks.length == 0) {
-                $('.edit').prop("disabled", true);
-                $('.delete').prop("disabled", true);
-                $('.add').prop("disabled", false);
-            } else if (checks.length == 1) {
-                $('.add').prop("disabled", true);
-                $('.edit').prop("disabled", false);
-                $('.delete').prop("disabled", false);
-
-                var selected = checks[0].className;
-                var buttonEdit = document.querySelector(".edit");
-                var buttonDelete = document.querySelector(".delete");
-                buttonEdit.setAttribute("data-target", "#modalEditarProyecto" + selected);
-                buttonDelete.setAttribute("data-target", "#modalEliminarProyecto" + selected);
-            } else {
-                $('.add').prop("disabled", true);
-                $('.edit').prop("disabled", true);
-                $('.delete').prop("disabled", false);
-
-                var action = "<?= URL ?>proyectos/eliminar/";
-
-                for (const check of checks) {
-                    action = action + check.className + "/";
-                }
-                var formEliminar = document.querySelector(".form-eliminar-varios");
-                formEliminar.setAttribute("action", action);
-
-                var buttonDelete = document.querySelector(".delete");
-                buttonDelete.setAttribute("data-target", "#modalEliminarProyectos");
-            }
-        }
-    </script>
+    
     <script>
         $(document).ready(function() {
             var activo = "contratos";
