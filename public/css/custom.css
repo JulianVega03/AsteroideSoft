@@ -104,6 +104,10 @@ button:disabled {
     margin-bottom: 5px;
 }
 
+.hide {
+    display: none;
+}
+
 @media (max-width: 600px) {
     .card__grilla {
         display: grid;

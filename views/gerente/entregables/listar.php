@@ -14,8 +14,9 @@
                     <div class="card-header">
                         <h4 class="card-title">Proyecto X</h4>
                         <div class="card-header-icons">
-                            <button class="edit" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-edit fa-lg"></i></button>
-                            <button class="delete" data-toggle="modal" data-target="#modalEliminarEntregable"><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                            <button class="view hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-eye fa-lg"></i></button>
+                            <button class="edit hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-edit fa-lg"></i></button>
+                            <button class="delete hide" data-toggle="modal" data-target="#modalEliminarEntregable"><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -123,8 +124,8 @@
 
     <script>
         $('.addEmp').prop("disabled", true);
-        $('.edit').prop("disabled", true);
-        $('.delete').prop("disabled", true);
+        // $('.edit').prop("disabled", true);
+        // $('.delete').prop("disabled", true);
 
         function select() {
             if (!this.classList.contains('plus')) {
@@ -136,17 +137,17 @@
         function actualizar() {
             var seleccionados = $('.card__grilla-elemento-select');
             if (seleccionados.length == 0) {
-                $('.edit').prop("disabled", true);
-                $('.delete').prop("disabled", true);
-                $('.add').prop("disabled", false);
+                document.querySelector('.view').classList.add('hide');
+                document.querySelector('.edit').classList.add('hide');
+                document.querySelector('.delete').classList.add('hide');
             } else if (seleccionados.length == 1) {
-                $('.add').prop("disabled", true);
-                $('.edit').prop("disabled", false);
-                $('.delete').prop("disabled", false);
+                document.querySelector('.view').classList.remove('hide');
+                document.querySelector('.edit').classList.remove('hide');
+                document.querySelector('.delete').classList.remove('hide');
             } else {
-                $('.add').prop("disabled", true);
-                $('.edit').prop("disabled", true);
-                $('.delete').prop("disabled", false);
+                document.querySelector('.view').classList.add('hide');
+                document.querySelector('.edit').classList.add('hide');
+                document.querySelector('.delete').classList.remove('hide');
             }
         }
         var elementos = document.querySelectorAll('.card__grilla-elemento');
