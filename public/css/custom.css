@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.card-body__flex {
+    display: flex;
+}
+
 .card-header-icons {
     margin-left: auto;
     margin-right: 0;
@@ -53,8 +57,8 @@ button:disabled {
 
 .card__grilla-elemento-select {
     transform: scale(1.1);
-    border-color: #ef8157;
-    box-shadow: 0 0 1rem #ef8157;
+    border-color: #66615B;
+    box-shadow: 0 0 1rem #66615B;
 }
 
 .plus {

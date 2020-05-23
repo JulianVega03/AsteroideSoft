@@ -44,6 +44,70 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> Agregar empleados al Proyecto</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body__flex">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label for="buscar">Buscar Empleado</label>
+                                    <input type="double" class="form-control" id="buscar">
+                                </div>
+                            </div>
+                            <div class="card-header-icons">
+                                <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary addEmp">Agregar Varios</button></a>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table text-center tabla">
+                                <thead class=" text-primary">
+                                    <th>
+
+                                    </th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Documento</th>
+                                    <th>Correo</th>
+                                    <th>Acción</th>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td> 1151563</td>
+                                        <td>Eduard</td>
+                                        <td>Cantillo</td>
+                                        <td>15985645</td>
+                                        <td>eduard@gmail.com</td>
+                                        <td>
+                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary">Agregar</button></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>1151561</td>
+                                        <td>Fabián</td>
+                                        <td>Gonzales</td>
+                                        <td>14685041</td>
+                                        <td>fabian@gmail.com</td>
+                                        <td>
+                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary">Agregar</button></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal New-->
@@ -58,14 +122,15 @@
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 
     <script>
+        $('.addEmp').prop("disabled", true);
         $('.edit').prop("disabled", true);
         $('.delete').prop("disabled", true);
 
         function select() {
-            if(!this.classList.contains('plus')) {
+            if (!this.classList.contains('plus')) {
                 this.classList.toggle('card__grilla-elemento-select');
                 actualizar();
-            }             
+            }
         }
 
         function actualizar() {
@@ -84,8 +149,48 @@
                 $('.delete').prop("disabled", false);
             }
         }
-            var elementos = document.querySelectorAll('.card__grilla-elemento');
-            elementos.forEach(elemento => elemento.addEventListener('click', select));
+        var elementos = document.querySelectorAll('.card__grilla-elemento');
+        elementos.forEach(elemento => elemento.addEventListener('click', select));
+
+        document.querySelector("#buscar").onkeyup = function() {
+            $TableFilter(".tabla", this.value);
+        }
+
+        $TableFilter = function(id, value) {
+            var rows = document.querySelectorAll(id + ' tbody tr');
+
+            for (var i = 0; i < rows.length; i++) {
+                var showRow = false;
+
+                var row = rows[i];
+                row.style.display = 'none';
+
+                for (var x = 0; x < row.childElementCount; x++) {
+                    if (row.children[x].textContent.toLowerCase().indexOf(value.toLowerCase().trim()) > -1) {
+                        showRow = true;
+                        break;
+                    }
+                }
+
+                if (showRow) {
+                    row.style.display = null;
+                }
+            }
+        }
+
+        var checks = $(':checkbox');
+        for (const check of checks) {
+            check.addEventListener('click', actualizarEmp);
+        }
+
+        function actualizarEmp() {
+            var checks = $('tbody > tr > td > :checked');
+            if (checks.length > 1) {
+                $('.addEmp').prop("disabled", false);
+            } else {
+                $('.addEmp').prop("disabled", true);
+            }
+        }
     </script>
 </div>
 

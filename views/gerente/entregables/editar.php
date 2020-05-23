@@ -34,7 +34,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="duracion">Duración</label>
-                                <input type="number" class="form-control" id="duracion" value="12" name="duracion">
+                                <input type="number" class="form-control" id="duracion" value="12" name="duracion" readonly>
                             </div>
                         </div>
                     </div>
