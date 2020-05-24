@@ -98,7 +98,7 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <a type="button" href="" class="btn btn-primary">Acceder</a>
+                                                <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary">Acceder</button></a>
                                             </td>
                                         </tr>
 
@@ -194,15 +194,8 @@
 
 
     </div>
+
     
-    <script>
-        $(document).ready(function() {
-            var activo = "contratos";
-            console.log("este :  " + activo);
-            var elemento = document.querySelector("#" + activo);
-            elemento.addClass('active');
-        });
-    </script>
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 </div>
 <?php require_once 'views/gerente/templates/scripts.php'; ?>
