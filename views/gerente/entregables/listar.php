@@ -14,7 +14,7 @@
                     <div class="card-header">
                         <h4 class="card-title">Proyecto X</h4>
                         <div class="card-header-icons">
-                            <button class="view hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-eye fa-lg"></i></button>
+                            <a href="<?=URL?>entregable/ver"><button class="view hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-eye fa-lg"></i></button></a>
                             <button class="edit hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-edit fa-lg"></i></button>
                             <button class="delete hide" data-toggle="modal" data-target="#modalEliminarEntregable"><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
@@ -50,7 +50,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> Agregar empleados al Proyecto</h4>
+                        <h4 class="card-title"> Empleados del Proyecto</h4>
                     </div>
                     <div class="card-body">
                         <div class="card-body__flex">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="card-header-icons">
-                                <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary addEmp">Agregar Varios</button></a>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#agregarEmpleados">Agregar Empleados</button>
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@
                                         <td>15985645</td>
                                         <td>eduard@gmail.com</td>
                                         <td>
-                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary">Agregar</button></a>
+                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-danger">Eliminar</button></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -99,7 +99,7 @@
                                         <td>14685041</td>
                                         <td>fabian@gmail.com</td>
                                         <td>
-                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary">Agregar</button></a>
+                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-danger">Eliminar</button></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -120,7 +120,12 @@
     <!-- Modal Delete -->
     <?php include_once 'views/gerente/entregables/eliminar.php'; ?>
 
+    <!-- Agregar Empleados -->
+    <?php require_once 'views/gerente/proyectos/agregarEmpleados.php'; ?>
+
     <?php require_once 'views/gerente/templates/footer.php'; ?>
+
+    
 
     <script>
         $('.addEmp').prop("disabled", true);

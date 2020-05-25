@@ -108,6 +108,26 @@ button:disabled {
     display: none;
 }
 
+.verEntregable .entregable td:first-child input {
+    font-weight: bold;
+}
+
+.verEntregable .etapa td:first-child input {
+    font-weight: bold;
+    text-indent: 2em;
+}
+
+.verEntregable .actividad td:first-child input {
+    text-indent: 4em;
+}
+
+.verEntregable input {
+    width: 100%;
+    border: none;
+    outline: none;
+    margin: 0;
+}
+
 @media (max-width: 600px) {
     .card__grilla {
         display: grid;

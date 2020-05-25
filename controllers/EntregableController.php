@@ -14,6 +14,11 @@ class EntregableController extends Controller
         $this->view('entregables/listar');
     }
 
+    public function actionVer() 
+    {
+        $this->view('entregables/verEntregable');
+    }
+
     public function actionNuevo()
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {

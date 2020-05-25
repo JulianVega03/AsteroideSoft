@@ -55,7 +55,7 @@
                                             <td><input type="checkbox"></td>
                                             <td>
                                                 <?= $proyecto->getNombre() ?>
-                                            </td>
+                                            </td> 
                                             <td>
                                                 <?= $proyecto->getPeriodoInicio() ?>
                                             </td>
