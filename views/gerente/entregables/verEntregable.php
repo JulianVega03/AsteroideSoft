@@ -14,48 +14,48 @@
                     <div class="card-header">
                         <h4 class="card-title">Entregable 1</h4>
                         <div class="card-header-icons">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                   Insertar
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item filaA">Insertar Arriba</a>
-                                    <a class="dropdown-item filaD">Insertar Debajo</a>
-                                </div>
-                            </div>
                             <button class="indentar"><i class="fas fa-indent fa-2x fa-lg"></i></button></a>
                             <button class="desindentar"><i class="fas fa-2x fa-outdent fa-lg"></i></button>
                             <button class="eliminar"><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                        </div>
+                    </div>
+                    <div class="dropdown ml-auto mr-3">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Insertar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item filaA">Insertar Arriba</a>
+                            <a class="dropdown-item filaD">Insertar Debajo</a>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table verEntregable">
                                 <thead class=" text-primary">
-                                    <th>Nombre</th>
-                                    <th>Duración</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
+                                    <th class="cin">Nombre</th>
+                                    <th class="diez">Duración</th>
+                                    <th class="vein">Fecha Inicio</th>
+                                    <th class="vein">Fecha Fin</th>
                                 </thead>
                                 <tbody>
 
                                     <tr class="entregable">
-                                        <td><input type="text" value="Documento Alcance Global"></td>
-                                        <td><input type="text" value="12"></td>
-                                        <td><input type="date"></td>
-                                        <td><input type="date"></td>
+                                        <td class="cin"><input type="text" value="Documento Alcance Global"></td>
+                                        <td class="diez"><input type="text" value="12"></td>
+                                        <td class="vein"><input type="date"></td>
+                                        <td class="vein"><input type="date"></td>
                                     </tr>
                                     <tr class="etapa">
-                                        <td><input type="text" value="Análisis"></td>
-                                        <td><input type="text" value="4"></td>
-                                        <td><input type="date"></td>
-                                        <td><input type="date"></td>
+                                        <td class="cin"><input type="text" value="Análisis"></td>
+                                        <td class="diez"><input type="text" value="4"></td>
+                                        <td class="vein"><input type="date"></td>
+                                        <td class="vein"><input type="date"></td>
                                     </tr>
                                     <tr class="actividad">
-                                        <td><input type="text" value="Comprar leche"></td>
-                                        <td><input type="text" value="1"></td>
-                                        <td><input type="date"></td>
-                                        <td><input type="date"></td>
+                                        <td class="cin"><input type="text" value="Comprar leche"></td>
+                                        <td class="diez"><input type="text" value="1"></td>
+                                        <td class="vein"><input type="date"></td>
+                                        <td class="vein"><input type="date"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -86,7 +86,6 @@
 
         function seleccionar() {
             index = $(this).parent('tr').index();
-            console.log(index)
             if (index == 0) {
                 document.querySelector('.filaA').classList.add('disabled');
             } else if (index > 0) {
@@ -100,7 +99,7 @@
             } else if ($('table > tbody > tr').eq(index)[0].className == 'entregable') {
                 $('table > tbody > tr').eq(index)[0].className = 'etapa';
             } else if ($('table > tbody > tr').eq(index)[0].className == 'etapa') {
-                if ($('table > tbody > tr').eq(index - 1)[0].className = 'entregable') {
+                if ($('table > tbody > tr').eq(index - 1)[0].className == 'entregable') {
                     alert('No se puede realizar esta acción');
                 } else {
                     $('table > tbody > tr').eq(index)[0].className = 'actividad';
@@ -116,8 +115,12 @@
             } else if ($('table > tbody > tr').eq(index)[0].className == 'entregable') {
                 alert('No se puede realizar esta acción');
             } else if ($('table > tbody > tr').eq(index)[0].className == 'etapa') {
-                if($('table > tbody > tr').eq(index+1)[0].className == 'actividad') {
-                    alert('No se puede realizar esta acción');
+                if ($('table tr').length - 2 != index) {
+                    if ($('table > tbody > tr').eq(index + 1)[0].className == 'actividad') {
+                        alert('No se puede realizar esta acción');
+                    } else {
+                        $('table > tbody > tr').eq(index)[0].className = 'entregable';
+                    }
                 } else {
                     $('table > tbody > tr').eq(index)[0].className = 'entregable';
                 }
@@ -152,7 +155,6 @@
 
         function evaluarD() {
             if ($('table > tbody > tr').eq(index - 1)[0].className == 'entregable') {
-                console.log('crea etapa')
                 $('table > tbody > tr').eq(index)[0].className = 'etapa';
             } else {
                 $('table > tbody > tr').eq(index)[0].className = 'actividad';

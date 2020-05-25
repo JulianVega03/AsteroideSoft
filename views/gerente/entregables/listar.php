@@ -14,9 +14,9 @@
                     <div class="card-header">
                         <h4 class="card-title">Proyecto X</h4>
                         <div class="card-header-icons">
-                            <a href="<?=URL?>entregable/ver"><button class="view hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-eye fa-lg"></i></button></a>
-                            <button class="edit hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-edit fa-lg"></i></button>
-                            <button class="delete hide" data-toggle="modal" data-target="#modalEliminarEntregable"><i class="fas fa-2x fa-trash fa-lg"></i></button>
+                            <a href="<?=URL?>entregable/ver"><button class="viewEntregable hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-eye fa-lg"></i></button></a>
+                            <button class="editEntregable hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-edit fa-lg"></i></button>
+                            <button class="deleteEntregable hide" data-toggle="modal" data-target="#modalEliminarEntregable"><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -136,31 +136,31 @@
     
 
     <script>
-        $('.addEmp').prop("disabled", true);
-        // $('.edit').prop("disabled", true);
-        // $('.delete').prop("disabled", true);
+        // $('.addEmp').prop("disabled", true);
 
         function select() {
             if (!this.classList.contains('plus')) {
                 this.classList.toggle('card__grilla-elemento-select');
-                actualizar();
+                console.log('agregando clase')
+                actualizarBotones();
             }
         }
 
-        function actualizar() {
+        function actualizarBotones() {
+            console.log('actualizando')
             var seleccionados = $('.card__grilla-elemento-select');
             if (seleccionados.length == 0) {
-                document.querySelector('.view').classList.add('hide');
-                document.querySelector('.edit').classList.add('hide');
-                document.querySelector('.delete').classList.add('hide');
+                document.querySelector('.viewEntregable').classList.add('hide');
+                document.querySelector('.editEntregable').classList.add('hide');
+                document.querySelector('.deleteEntregable').classList.add('hide');
             } else if (seleccionados.length == 1) {
-                document.querySelector('.view').classList.remove('hide');
-                document.querySelector('.edit').classList.remove('hide');
-                document.querySelector('.delete').classList.remove('hide');
+                document.querySelector('.viewEntregable').classList.remove('hide');
+                document.querySelector('.editEntregable').classList.remove('hide');
+                document.querySelector('.deleteEntregable').classList.remove('hide');
             } else {
-                document.querySelector('.view').classList.add('hide');
-                document.querySelector('.edit').classList.add('hide');
-                document.querySelector('.delete').classList.remove('hide');
+                document.querySelector('.viewEntregable').classList.add('hide');
+                document.querySelector('.editEntregable').classList.add('hide');
+                document.querySelector('.deleteEntregable').classList.remove('hide');
             }
         }
         var elementos = document.querySelectorAll('.card__grilla-elemento');

@@ -121,12 +121,26 @@ button:disabled {
     text-indent: 4em;
 }
 
-.verEntregable input {
+.verEntregable td input {
     width: 100%;
     border: none;
     outline: none;
     margin: 0;
 }
+
+.cin {
+    width: 60% !important;
+}
+
+.diez {
+    width: 5% !important;
+}
+
+.vein {
+    width: 10% !important;
+}
+
+
 
 @media (max-width: 600px) {
     .card__grilla {
