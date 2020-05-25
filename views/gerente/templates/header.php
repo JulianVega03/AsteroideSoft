@@ -26,6 +26,8 @@
   <link href="<?= URL ?>public/assets/demo/demo.css" rel="stylesheet" />
   <!-- CSS CUSTOM  -->
   <link href="<?= URL ?>public/css/custom.css" rel="stylesheet" />
+  <!--CSS del calendaario-->
+  <link href="<?= URL ?>public/css/estilo.css" rel="stylesheet"/>
 </head>
 
 <body class="">
