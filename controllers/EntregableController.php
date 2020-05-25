@@ -11,7 +11,8 @@ class EntregableController extends Controller
 
     public function actionIndex()
     {
-        $this->view('entregables/listar');
+        $datos = ["titulo" => "Divisis 2.0"];
+        $this->view('entregables/listar',$datos);
     }
 
     public function actionVer() 

@@ -39,6 +39,14 @@
                                     <div class="circle">E4</div>
                                     <div class="porcentaje">15%</div>
                                 </div>
+                                <div class="card__grilla-elemento">
+                                    <div class="circle">E3</div>
+                                    <div class="porcentaje">15%</div>
+                                </div>
+                                <div class="card__grilla-elemento">
+                                    <div class="circle">E4</div>
+                                    <div class="porcentaje">15%</div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,20 @@ class ContratoModel extends Model{
 
 
     public function insertar($contrato){
-       
+        $query = $this->db->connect()->prepare('INSERT INTO contrato (codigo, tipo, persona, fecha_firma, valor, estado) VALUES(:codigo, :tipo, :persona, :fecha_firma, :valor, :estado)');
+        try {
+            $query->execute([
+                'codigo' => $contrato->getCodigo(),
+                'tipo' => $contrato->getTipo(),
+                'persona' => $contrato->getPersona(),
+                'fecha_firma' => $contrato->getFechaFirma(),
+                'valor' => $contrato->getValor(),
+                'estado' => $contrato->getEstado()
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function obtenerById(){
@@ -39,6 +52,43 @@ class ContratoModel extends Model{
          return $contratos;
      }catch(PDOException $e){
          return [];
+        }
+    }
+
+    public function eliminar($id)
+    {
+        $query = $this->db->connect()->prepare("DELETE FROM contrato WHERE codigo = :id");
+        try {
+            $query->execute(['id' => $id]);
+            if ($query->rowCount()>0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function actualizar($contrato)
+    {
+        $query = $this->db->connect()->prepare("UPDATE contrato SET tipo = :tipo, persona = :persona, fecha_firma = :fecha_firma, valor = :valor, estado = :estado WHERE codigo = :codigo");
+        try {
+            $query->execute([
+                'codigo' => $contrato->getCodigo(),
+                'tipo' => $contrato->getTipo(),
+                'persona' => $contrato->getPersona(),
+                'fecha_firma' => $contrato->getFechaFirma(),
+                'valor' => $contrato->getValor(),
+                'estado' => $contrato->getEstado()
+            ]);
+            if ($query->rowCount()>0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return false;
         }
     }
 
