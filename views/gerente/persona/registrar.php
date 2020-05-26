@@ -12,11 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title" id="perra"> registrar persona</h4>
-                        <div class="card-header-icons">
-                            <button class="add" data-toggle="modal" data-target="#modalNuevoProyecto"><i class="fas fa-2x fa-plus fa-lg"></i></button>
-                            <button class="edit" data-toggle="modal" data-target="#modalEditarProyecto"><i class="fas fa-2x fa-edit fa-lg"></i></button>
-                            <button class="delete" data-toggle="modal" data-target="#modalEliminarProyecto"><i class="fas fa-2x fa-trash fa-lg"></i></button>
-                        </div>
+                       
                     </div>
 
             <div class="card-body">
@@ -111,7 +107,8 @@
                   
                         <button class="btn btn-primary" type="submit">Enviar Registro</button>
                 </form>
-                <button class="btn btn-primary" onclick= mostrarTabla()  type="">Mostrar tabla </button>
+                <button id="btn" class="btn btn-primary" onclick= mostrarTabla() type="">Mostrar tabla </button>
+                <button id="btn" class="btn btn-primary" onclick= ocultarTabla() type="">Ocultar tabla </button>
                    
                     <div   id="tablatabla" class="contenedor-tabla">
                     
@@ -173,7 +170,7 @@
 <style>
 .contenedor-tabla{
     
-    background-color:red;
+    background-color:#A0D3E7;
     height: auto ;
     width:  100%;
 }
@@ -207,6 +204,8 @@ function ocultarTabla() {
     document.getElementById('tablatabla').style.display = 'none';  
 }
 </script>
+
+
 
 
 <script>
