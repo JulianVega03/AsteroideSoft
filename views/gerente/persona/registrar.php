@@ -79,23 +79,74 @@
                                <div class="valid-feedback">¡Ok válido!</div>
                                <div class="invalid-feedback">Complete el campo.</div>   
                             </div>
-                            <div class="col-md-5 mb-3">
-                               <label >¿Eres Empleado?</label>
-                               <input class="" type="checkbox" id="inlineCheckbox1" value="option1" >
-                               <label>Si!</label>
-                               <input class="" type="checkbox" id="inlineCheckbox2" value="option2" >
-                               <label>No!</label>
+                            
+                          <div class="col-md-5 mb-3">
+                               <label for="">¿Es empleado?</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" onclick= mostrarCargo()  name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                   <label class="form-check-label" for="inlineRadio1">Si!</label>
+                                </div>
+                                
+                               <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" onclick= ocultarCargo()  name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                 <label class="form-check-label" for="inlineRadio2">No!</label>
+                                </div>
+
                             </div>
-                       </div>
+                            
+                        </div>
+
+                        <div  id="cargo" class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <label for="exampleFormControlSelect1">Cargo del empleado</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Documentador</option>
+                                    <option>Desarrollador Senior</option>
+                                    <option>Desarrollador Junior</option>
+                                    <option>DBA</option>
+                                    <option>Analista de sistemas</option>
+                                </select>
+                            </div>
+                        </div>
                   
                         <button class="btn btn-primary" type="submit">Enviar Registro</button>
                 </form>
+                <button class="btn btn-primary" onclick= mostrarTabla()  type="">Mostrar tabla </button>
                    
-               <div class="contenedor-tabla">
-                    <button>Mostrar tabla</button>
-                        <div class="tabla">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptas quos eveniet sit, expedita ab magnam fugit itaque veniam ipsum totam corrupti iure adipisci amet eius numquam obcaecati enim repellendus.</p>
-                        </div>
+                    <div   id="tablatabla" class="contenedor-tabla">
+                    
+                        <table  class="table table-sm">
+                            <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Apellido</th>
+                                  <th scope="col">correo</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                               <tr>
+                                 <th scope="row">1</th>
+                                 <td>Jhonatan Andres</td>
+                                 <td>Beltran Caceres</td>
+                                 <td>jhonatanandres@gmail.com</td>
+                              </tr>
+                              <tr>
+                                 <th scope="row">2</th>
+                                 <td>juan ricardo</td>
+                                 <td>jimenez martinez</td>
+                                 <td>juanricardo@hotmail.com</td>
+                             </tr>
+                             <tr>
+                                 <th scope="row">2</th>
+                                 <td>maria jose</td>
+                                 <td>quintero jaimes</td>
+                                 <td>mariajose@hotmail.com</td>
+                             </tr>
+                              
+                         </tbody>
+                      </table>
+                       
                 
                 </div>
                 
@@ -123,19 +174,40 @@
 .contenedor-tabla{
     
     background-color:red;
-    height: 400px ;
+    height: auto ;
     width:  100%;
 }
-.tabla{
-    background-color:blue;
-    width:  90%;
-    height: 300px ;
-    margin-left: auto ;
-    margin-right: auto;
-
+#tablatabla{
+    display: none;
 }
 
+.table-sm{
+    border-style: solid; border-width: 1px;
+}
+
+#cargo{
+    display: none;
+}
 </style>
+
+<script>
+function mostrarCargo() {
+    document.getElementById('cargo').style.display = 'block';  
+}
+
+function ocultarCargo() {
+    document.getElementById('cargo').style.display = 'none';  
+}
+
+function mostrarTabla() {
+    document.getElementById('tablatabla').style.display = 'block';  
+}
+
+function ocultarTabla() {
+    document.getElementById('tablatabla').style.display = 'none';  
+}
+</script>
+
 
 <script>
     (function() {
@@ -156,3 +228,6 @@
   }, false);
 })();
     </script>
+
+
+
