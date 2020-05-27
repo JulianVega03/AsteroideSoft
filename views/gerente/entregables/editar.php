@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEditarEntregable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="modalEntregable<?= $entregable->getId() ?>-editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?=URL?>proyectos/editar" method="post">
+            <form action="<?=URL?>entregables/editar" method="post">
                 <div class="modal-body">
                     <div class="card-body">
 
@@ -15,27 +15,27 @@
                         
                             <div class="form-group col-md-6">
                                 <label for="proyecto">Proyecto</label>
-                                <input type="double" class="form-control" id="proyecto" placeholder="Proyecto X" name="proyecto" value="Proyecto X" readonly>
+                                <input type="double" class="form-control"  placeholder="Proyecto X" name="proyecto" value="<?= $pm->obtenerPorId(str_replace('entregables/', '', $_GET['url']))->getCodigo() ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="proyecto">ID Entregable</label>
+                                <input type="double" class="form-control"  placeholder="Proyecto X" name="id" value="<?= $entregable->getId() ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Entregable 1" name="nombre" value="Entregable 1">
+                            <input type="text" class="form-control" placeholder="Entregable 1" name="nombre" value="<?= $entregable->getNombre() ?>">
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea type="text" class="form-control" id="descripcion" placeholder="" name="descripcion" value="Descripcion ... "  maxlength="120"></textarea>
+                            <input type="text" class="form-control"  name="descripcion" value="<?= $entregable->getDescripcion() ?>" ></input>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-7">
+                            <div class="form-group col-md-12">
                                 <label for="costo">Costo</label>
-                                <input type="double" class="form-control" id="costo" value="1200" name="costo">
+                                <input type="double" class="form-control" value="<?= $entregable->getCosto() ?>" name="costo">
                             </div>
 
-                            <div class="form-group col-md-3">
-                                <label for="duracion">Duración</label>
-                                <input type="number" class="form-control" id="duracion" value="12" name="duracion" readonly>
-                            </div>
                         </div>
                     </div>
                 </div>

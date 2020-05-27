@@ -98,7 +98,7 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <a href="<?= URL ?>entregable"><button type="button" class="btn btn-primary">Acceder</button></a>
+                                                <a href="<?= URL ?>entregables/<?= $proyecto->getCodigo() ?>"><button type="button" class="btn btn-primary">Acceder</button></a>
                                             </td>
                                         </tr>
 

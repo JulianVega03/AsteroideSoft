@@ -10,6 +10,7 @@
             <form action="<?= URL ?>entregables/nuevo" method="post">
                 <div class="modal-body">
                     <div class="card-body">
+                    <input type="text" class="form-control" id="nombred" placeholder="" name="proyecto" style="display:none" value="<?=  str_replace("entregables/","",$_GET['url'])?>">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" id="nombre" placeholder="" name="nombre" required>

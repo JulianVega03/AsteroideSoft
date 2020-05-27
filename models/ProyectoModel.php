@@ -43,7 +43,7 @@ class ProyectoModel extends Model
                 'fecha_inicio' => $proyecto->getPeriodoInicio(),
                 'duracion' => $proyecto->getDuracion()
             ]);
-            if ($query->rowCount()>0) {
+            if ($query->rowCount() > 0) {
                 return true;
             } else {
                 return false;
@@ -58,7 +58,7 @@ class ProyectoModel extends Model
         $query = $this->db->connect()->prepare("DELETE FROM proyecto WHERE codigo = :id");
         try {
             $query->execute(['id' => $id]);
-            if ($query->rowCount()>0) {
+            if ($query->rowCount() > 0) {
                 return true;
             } else {
                 return false;
@@ -88,6 +88,32 @@ class ProyectoModel extends Model
             return $proyectos;
         } catch (PDOException $e) {
             return [];
+        }
+    }
+
+    public function obtenerPorId($id)
+    {
+        $query = $this->db->connect()->prepare("SELECT * FROM proyecto WHERE codigo = :codigo");
+        try {
+            $query->execute(['codigo' => $id]);
+
+            while ($row = $query->fetch()) {
+                $this->proyecto->setCodigo($row['codigo']);
+                $this->proyecto->setNombre($row['nombre']);
+                $this->proyecto->setContrato($row['contrato']);
+                $this->proyecto->setPeriodoInicio($row['fecha_inicio']);
+                $this->proyecto->setDuracion($row['duracion']);
+                $this->proyecto->setEstado($row['estado']);
+                $this->proyecto->setPresupuesto($row['presupuesto']);
+            }
+            if ($query->rowCount() > 0) {
+                return $this->proyecto;
+            } else {
+                return null;
+            }
+           
+        } catch (PDOException $e) {
+            return null;
         }
     }
 }

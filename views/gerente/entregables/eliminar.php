@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminarEntregable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="modalEntregable<?= $entregable->getId() ?>-eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -7,9 +7,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="">
+                    <form action="<?=URL?>entregables/eliminar/<?=$entregable->getId()?>">
                         <div class="modal-body text-center">
-                            ¿Estas Seguro de Eliminar el Entregable 1?
+                            ¿Estas Seguro de Eliminar el Entregable "<?=$entregable->getNombre()?>"?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

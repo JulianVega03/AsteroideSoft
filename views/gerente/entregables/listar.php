@@ -12,9 +12,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Proyecto X</h4>
+                        <h4 class="card-title">
+                            <?php
+                            $pm = new ProyectoModel();
+                            ?>
+
+                            <strong style="font-family: 'roboto'">Proyecto: </strong><?= $pm->obtenerPorId(str_replace('entregables/', '', $_GET['url']))->getNombre() ?></h4>
                         <div class="card-header-icons">
-                            <a href="<?=URL?>entregable/ver"><button class="viewEntregable hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-eye fa-lg"></i></button></a>
+                            <a href="<?= URL ?>actividades/ver/" class="viewEntregable hide"><button><i class="fas fa-2x fa-eye fa-lg"></i></button></a>
                             <button class="editEntregable hide" data-toggle="modal" data-target="#modalEditarEntregable"><i class="fas fa-2x fa-edit fa-lg"></i></button>
                             <button class="deleteEntregable hide" data-toggle="modal" data-target="#modalEliminarEntregable"><i class="fas fa-2x fa-trash fa-lg"></i></button>
                         </div>
@@ -23,30 +28,25 @@
                         <div class="card-flex">
                             <div class="card__grilla">
                                 <div class="card__grilla-elemento plus"><button class="add" data-toggle="modal" data-target="#modalAñadirEntregable"><i class="fas fa-plus"></i></button></div>
-                                <div class="card__grilla-elemento">
-                                    <div class="circle">E1</div>
-                                    <div class="porcentaje">15%</div>
-                                </div>
-                                <div class="card__grilla-elemento">
-                                    <div class="circle">E2</div>
-                                    <div class="porcentaje">15%</div>
-                                </div>
-                                <div class="card__grilla-elemento">
-                                    <div class="circle">E3</div>
-                                    <div class="porcentaje">15%</div>
-                                </div>
-                                <div class="card__grilla-elemento">
-                                    <div class="circle">E4</div>
-                                    <div class="porcentaje">15%</div>
-                                </div>
-                                <div class="card__grilla-elemento">
-                                    <div class="circle">E3</div>
-                                    <div class="porcentaje">15%</div>
-                                </div>
-                                <div class="card__grilla-elemento">
-                                    <div class="circle">E4</div>
-                                    <div class="porcentaje">15%</div>
-                                </div>
+
+                                <?php
+                                foreach ($entregables as $entregable) {
+                                ?>
+
+                                    <div class="card__grilla-elemento text-center" data-edit="#modalEntregable<?= $entregable->getId() ?>">
+                                        <div class="circle">E1</div>
+                                        <div class="porcentaje"><?= $entregable->getNombre() ?></div>
+                                    </div>
+
+                                    <!-- Modal Edit-->
+                                    <?php include 'views/gerente/entregables/editar.php'; ?>
+                                    <!-- Modal Delete -->
+                                    <?php include 'views/gerente/entregables/eliminar.php'; ?>
+
+                                <?php
+                                }
+                                ?>
+
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> Empleados del Proyecto</h4>
+                        <h4 class="card-title"> Integrantes del Proyecto</h4>
                     </div>
                     <div class="card-body">
                         <div class="card-body__flex">
@@ -122,18 +122,37 @@
     <!-- Modal New-->
     <?php require_once 'views/gerente/entregables/nuevo.php'; ?>
 
-    <!-- Modal Edit-->
-    <?php include_once 'views/gerente/entregables/editar.php'; ?>
+    <!-- Modal - Eliminar varios al tiempo  -->
+    <div class="modal fade" id="modalEliminarVarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Proyecto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="get" class="form-eliminar-varios">
+                    <div class="modal-body text-center">
+                        <p class="text-eliminar">¿Estas Seguro de Eliminar Estos Entregables?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <!-- Modal Delete -->
-    <?php include_once 'views/gerente/entregables/eliminar.php'; ?>
+
 
     <!-- Agregar Empleados -->
     <?php require_once 'views/gerente/proyectos/agregarEmpleados.php'; ?>
 
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 
-    
+
 
     <script>
         // $('.addEmp').prop("disabled", true);
@@ -147,7 +166,9 @@
         }
 
         function actualizarBotones() {
-            console.log('actualizando')
+
+
+
             var seleccionados = $('.card__grilla-elemento-select');
             if (seleccionados.length == 0) {
                 document.querySelector('.viewEntregable').classList.add('hide');
@@ -157,10 +178,35 @@
                 document.querySelector('.viewEntregable').classList.remove('hide');
                 document.querySelector('.editEntregable').classList.remove('hide');
                 document.querySelector('.deleteEntregable').classList.remove('hide');
+
+
+                var elementoSelected = document.querySelector(".card__grilla-elemento-select").getAttribute('data-edit');
+                var ver = elementoSelected.replace("#modalEntregable", "");
+
+                document.querySelector(".viewEntregable").setAttribute('href', "<?= URL ?>actividades/ver/" + ver);
+                document.querySelector(".editEntregable").setAttribute('data-target', elementoSelected + "-editar");
+                document.querySelector(".deleteEntregable").setAttribute('data-target', elementoSelected + "-eliminar");
+
             } else {
                 document.querySelector('.viewEntregable').classList.add('hide');
                 document.querySelector('.editEntregable').classList.add('hide');
                 document.querySelector('.deleteEntregable').classList.remove('hide');
+
+
+                seleccionados = document.querySelectorAll('.card__grilla-elemento-select');
+
+                var action = "<?= URL ?>entregables/eliminar";
+
+                for (const element of seleccionados) {
+                    lista = element.getAttribute('data-edit');
+                    lista = lista.replace("#modalEntregable", "/");
+                    action += lista;
+                }
+
+                document.querySelector(".form-eliminar-varios").setAttribute("action", action);
+
+                var buttonDelete = document.querySelector(".deleteEntregable").setAttribute("data-target", "#modalEliminarVarios");
+
             }
         }
         var elementos = document.querySelectorAll('.card__grilla-elemento');

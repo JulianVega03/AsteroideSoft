@@ -12,7 +12,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Entregable 1</h4>
+                        <h4 class="card-title">
+                            <?php
+                            require_once 'models/EntregableModel.php';
+                            $eModel = new EntregableModel();
+                            ?>
+                           <strong>Entregable: </strong> <?=$eModel->obtenerById(str_replace("actividades/ver/", "", $_GET['url']))->getNombre();?>
+                        </h4>
                         <div class="card-header-icons">
                             <button class="indentar"><i class="fas fa-indent fa-2x fa-lg"></i></button></a>
                             <button class="desindentar"><i class="fas fa-2x fa-outdent fa-lg"></i></button>
