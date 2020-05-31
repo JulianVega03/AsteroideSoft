@@ -28,6 +28,11 @@
   <link href="<?= URL ?>public/css/custom.css" rel="stylesheet" />
 
   <link href="<?= URL ?>public/assets/demo/registrarperona.css" rel="stylesheet"/>
+  <!--CSS del calendaario-->
+  <link href="<?= URL ?>public/css/estilo.css" rel="stylesheet"/>
+
+  <!-- google graficos  -->
+  <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js" > </script>
 </head>
 
 <body class="">

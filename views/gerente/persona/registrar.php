@@ -99,7 +99,7 @@
                             </div>
                             <div id="cargo" class="form-row">
 
-                                <div class="col-md-6 ">
+                                <div class="col-md-7">
                                     <label for="exampleFormControlSelect1">Cargo del empleado</label>
                                     <select class="form-control" id="exampleFormControlSelect1" name="cargo">
                                         <?php
@@ -111,7 +111,7 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <label>Codigo Empleado:</label>
                                     <input type="text" class="form-control" id="codigo_empleado" name="codigoEmpleado" style="height: 38px;">
                                 </div>

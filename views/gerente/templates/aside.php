@@ -6,7 +6,7 @@
       </div>
       <!-- <p>CT</p> -->
     </a>
-    <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+    <a href="#" class="simple-text logo-normal">
       Gerente
       <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -33,35 +33,30 @@
           <p>Personal</p>
         </a>
       </li>
-      <li>
-        <a href="./map.html">
-          <i class="nc-icon nc-pin-3"></i>
-          <p>Estadisticas</p>
-        </a>
-      </li>
-      <li>
-        <a href="./notifications.html">
-          <i class="nc-icon nc-bell-55"></i>
-          <p>Reportes</p>
-        </a>
-      </li>
-      <li>
-        <a href="./user.html">
-          <i class="nc-icon nc-single-02"></i>
-          <p>Alertas</p>
-        </a>
-      </li>
-      <li>
-        <a href="./tables.html">
+      <li data-active="calendario">
+        <a href="<?= URL ?>calendario/">
           <i class="nc-icon nc-tile-56"></i>
           <p>Calendario</p>
         </a>
       </li>
-
-      <li class="active-pro">
-        <a href="./upgrade.html">
+      <li data-active="estadisticas">
+        <a href="<?= URL ?>estadisticas/">
           <i class="nc-icon nc-spaceship"></i>
-          <p>Meteoro Soft S.A</p>
+          <p>Estadisticas</p>
+        </a>
+      </li>
+      <li data-active="reportes">
+        <a href="<?= URL ?>reportes/">
+          <i class="nc-icon nc-bell-55"></i>
+          <p>Reportes</p>
+        </a>
+      </li>
+      
+
+      <li class="active-pro" data-active="asteroide">
+        <a href="<?= URL ?>asteroide/">
+          <i class="nc-icon nc-pin-3"></i>
+          <p>Asteroide Soft S.A</p>
         </a>
       </li>
     </ul>

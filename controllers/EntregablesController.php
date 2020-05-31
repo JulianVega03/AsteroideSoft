@@ -44,9 +44,9 @@ class EntregablesController extends Controller
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (isset($_POST['nombre'], $_POST['descripcion'], $_POST['costo'], $_POST['proyecto'], $_POST['id'])) {
 
-                $nombre = strtolower($_POST['nombre']);
-                $descripcion = strtolower($_POST['descripcion']);
-                $costo = strtolower($_POST['costo']);
+                $nombre = $_POST['nombre'];
+                $descripcion = $_POST['descripcion'];
+                $costo = $_POST['costo'];
                 $proyecto = $_POST['proyecto'];
                 $id = $_POST['id'];
 
@@ -93,9 +93,9 @@ class EntregablesController extends Controller
 
             if (isset($_POST['nombre'], $_POST['descripcion'], $_POST['costo'], $_POST['proyecto'])) {
 
-                $nombre = strtolower($_POST['nombre']);
-                $descripcion = strtolower($_POST['descripcion']);
-                $costo = strtolower($_POST['costo']);
+                $nombre = $_POST['nombre'];
+                $descripcion = $_POST['descripcion'];
+                $costo = $_POST['costo'];
                 $proyecto = $_POST['proyecto'];
                 $id = null;
 
@@ -123,10 +123,5 @@ class EntregablesController extends Controller
         return $pModel->obtenerEmpleadosAsignados($idProyecto);
     }
 
-    private function obtenerEmpleadosDisponibles($idProyecto)
-    {
-        require_once 'models/ProyectoModel.php';
-        $pModel = new ProyectoModel();
-        return $pModel->obtenerEmpleadosNoAsignados($idProyecto);
-    }
+    
 }

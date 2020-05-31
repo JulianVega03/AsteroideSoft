@@ -88,11 +88,63 @@ Core JS Files
     ?>
   });
   $(document).ready(function() {
-    
+
 
     // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
     demo.initChartsPages();
   });
+</script>
+<script src="<?= URL ?>public/js/scripts.js" type="text/javascript"></script>
+<!-- estadisticas -->
+<script type="text/javascript">
+  google.charts.load("current", {
+    packages: ["corechart"]
+  });
+  google.charts.load('current', {
+    'packages': ['table']
+  });
+
+  function drawChart(a, v) {
+    var data = new google.visualization.DataTable();
+    alert("Se va a crear un gráfico con " + a.length + " Items");
+    data.addColumn('string', 'Name');
+    data.addColumn('number', 'unidad');
+    data.addRows(a.length);
+    for (i = 0; i < a.length; i++) {
+      data.setCell(i, 0, a[i]);
+      data.setCell(i, 1, v[i]);
+
+    }
+    var options = {
+      title: 'Graficador',
+      is3D: true,
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+
+  }
+
+
+  function drawTable(a, v) {
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Data');
+    data.addColumn('number', 'Cantidad');
+    data.addRows(a.length);
+    for (i = 0; i < a.length; i++) {
+      data.setCell(i, 0, a[i]);
+      data.setCell(i, 1, v[i]);
+
+    }
+    var table = new google.visualization.PieChart(document.getElementById('table_div'));
+
+    table.draw(data, {
+      showRowNumber: true,
+      width: '100%',
+      height: '100%'
+    });
+  }
 </script>
 </body>
 
