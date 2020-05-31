@@ -111,9 +111,81 @@ class ProyectoModel extends Model
             } else {
                 return null;
             }
-           
         } catch (PDOException $e) {
             return null;
+        }
+    }
+
+    public function obtenerEmpleadosAsignados($idProyecto)
+    {
+        $empleados = [];
+        require_once 'PersonaModel.php';
+
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM asignacion WHERE proyecto = $idProyecto");
+
+            while ($row = $query->fetch()) {
+                $pModel = new PersonaModel();
+                $persona = $pModel->obtenerPorId($row['empleado']);
+
+
+                array_push($empleados, $persona);
+            }
+
+            return $empleados;
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+
+    public function obtenerEmpleadosDisponibles()
+    {
+        $disponibles = [];
+        require_once 'PersonaModel.php';
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM empleado");
+
+            while ($row = $query->fetch()) {
+                if (!$this->estaAsignado($row['documento'])) {
+                    $pModel = new PersonaModel();
+                    $persona = $pModel->obtenerPorId($row['documento']);
+                    array_push($disponibles, $persona);
+                }
+            }
+            return $disponibles;
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+
+    public function estaAsignado($documento)
+    {
+        $query = $this->db->connect()->prepare("SELECT * FROM asignacion WHERE empleado = :documento");
+        try {
+            $query->execute(['documento' => $documento]);
+
+            if ($query->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function quitarIntegrante($documento)
+    {
+        $query = $this->db->connect()->prepare("DELETE FROM asignacion WHERE empleado = :documento");
+        try {
+            $query->execute(['documento' => $documento]);
+            if ($query->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return false;
         }
     }
 }

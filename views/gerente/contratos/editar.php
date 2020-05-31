@@ -12,11 +12,11 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="codigo">Código del contrato</label>
-              <input type="number" min="0" class="form-control" id="codigo" name="codigo" value="<?= $contrato->getCodigo() ?>" readonly required>
+              <input type="number" min="0" class="form-control" id="codigo<?= $contrato->getCodigo() ?>" name="codigo" value="<?= $contrato->getCodigo() ?>" readonly required>
             </div>
             <div class="form-group col-md-6">
               <label for="tipoContrato">Tipo de contrato</label>
-              <select name="tipo_contrato" id="tipoContrato" class="form-control" required>
+              <select name="tipo_contrato" id="tipoContrato<?= $contrato->getCodigo() ?>" class="form-control" required>
                 <?php
                 foreach ($listTipoContrato as $tipoContrato) {
 
@@ -33,18 +33,18 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="valor">Valor del contrato</label>
-              <input type="number" class="form-control" min="0" id="valor" name="valor" value="<?= $contrato->getValor() ?>" required>
+              <input type="number" class="form-control" min="0" id="valor<?= $contrato->getCodigo() ?>" name="valor" value="<?= $contrato->getValor() ?>" required>
             </div>
 
             <div class="form-group col-md-6">
               <label for="fecha">Fecha de firma</label>
-              <input type="date" class="form-control" name="fecha_firma" id="fecha" value="<?= $contrato->getFechaFirma() ?>" required>
+              <input type="date" class="form-control" name="fecha_firma" id="fecha<?= $contrato->getCodigo() ?>" value="<?= $contrato->getFechaFirma() ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="personas">Persona Responsable</label>
-              <select name="persona" id="personas" class="form-control" required>
+              <select name="persona" id="personas<?= $contrato->getCodigo() ?>" class="form-control" required>
                 <?php
                 foreach ($listPersonas as $persona) {
                 ?>

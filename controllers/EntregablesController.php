@@ -11,8 +11,7 @@ class EntregablesController extends Controller
     {
         $this->entregableModel = $this->model("Entregable");
         $this->datos = [
-            "titulo" => "Entregables",
-            "entregables" => $this->obtenerEntregables($this->proyectoId)
+            "titulo" => "Entregables"
         ];
     }
 
@@ -22,7 +21,10 @@ class EntregablesController extends Controller
             $proyectoModel = new ProyectoModel();
             if ($proyectoModel->obtenerPorId($idProyecto[0])) {
                 $this->proyectoId = $idProyecto[0];
-                $this->__construct();
+                $this->datos += [
+                    "entregables" => $this->obtenerEntregables($idProyecto[0]),
+                    "integrantes" => $this->obtenerIntegrantesProyecto($idProyecto[0])
+                ];
                 $this->view('entregables/listar', $this->datos);
             } else {
                 header('location: ' . URL . 'proyectos');
@@ -61,7 +63,7 @@ class EntregablesController extends Controller
                 }
             }
         } else {
-            header('location: ' . URL . 'entregables/' . $proyecto);
+            header('location: ' . URL . 'entregables/' . $this->proyectoId);
         }
     }
 
@@ -70,16 +72,14 @@ class EntregablesController extends Controller
     {
         if ($param != null) {
             for ($i = 0; $i < count($param); $i++) {
+                $entregable = $this->entregableModel->obtenerById($param[$i]);
                 if ($this->entregableModel->eliminar($param[$i])) {
                     if ($i == count($param) - 1) {
-                        $this->__construct();
-                        $this->datos += ["estado" => "success"];
-                        header('location: ' . URL . 'entregables/' . $this->proyectoId);
+                        header('location: ' . URL . 'entregables/' . $entregable->getProyecto());
                     }
                 } else {
                     $this->__construct();
-                        $this->datos += ["estado" => "error"];
-                        header('location: ' . URL . 'entregables/' . $this->proyectoId);
+                    header('location: ' . URL . 'entregables/' .  $entregable->getProyecto());
                 }
             }
         } else {
@@ -112,7 +112,21 @@ class EntregablesController extends Controller
                 }
             }
         } else {
-            header('location: ' . URL . 'entregables/' . $proyecto);
+            header('location: ' . URL . 'entregables/');
         }
+    }
+
+    private function obtenerIntegrantesProyecto($idProyecto)
+    {
+        require_once 'models/ProyectoModel.php';
+        $pModel = new ProyectoModel();
+        return $pModel->obtenerEmpleadosAsignados($idProyecto);
+    }
+
+    private function obtenerEmpleadosDisponibles($idProyecto)
+    {
+        require_once 'models/ProyectoModel.php';
+        $pModel = new ProyectoModel();
+        return $pModel->obtenerEmpleadosNoAsignados($idProyecto);
     }
 }

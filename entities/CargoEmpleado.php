@@ -10,6 +10,14 @@ class CargoEmpleado
     private $periodoInicio;
     private $periodoFin;
 
+    public function __construct($documento = null, $cargo = null, $periodoInicio = null, $periodoFin = null)
+    {
+        $this->documento = $documento;
+        $this->cargo = $cargo;
+        $this->periodoInicio = $periodoInicio;
+        $this->periodoFin = $periodoFin;
+    }
+
     public function getDocumento()
     {
 

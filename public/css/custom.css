@@ -86,7 +86,8 @@ button:disabled {
     font-size: 29px;
 }
 
-.circle, .porcentaje {
+.circle,
+.porcentaje {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -96,7 +97,7 @@ button:disabled {
 }
 
 .circle:hover {
-    cursor : pointer;
+    cursor: pointer;
 }
 
 .porcentaje {
@@ -140,17 +141,15 @@ button:disabled {
     width: 10% !important;
 }
 
-
-
 @media (max-width: 600px) {
     .card__grilla {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 35px;
     }
-  }
+}
 
-  @media (max-width: 400px) {
+@media (max-width: 400px) {
     .card__grilla-elemento {
         width: 120px;
         height: 120px;
@@ -159,4 +158,4 @@ button:disabled {
         width: 75px;
         height: 75px;
     }
-  }
+}

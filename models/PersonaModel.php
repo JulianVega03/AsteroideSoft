@@ -5,7 +5,7 @@ class PersonaModel extends Model
 {
 
     private $db;
-    private $person;
+    private $persona;
 
     function __construct()
     {
@@ -16,18 +16,15 @@ class PersonaModel extends Model
     public function insertar($persona)
     {
 
-        $query = $this->db->connect()->prepare('INSERT INTO persona (documento, tipo_documento, nombre, apellido, correo, contrasena, direccion, telefono) 
-                        VALUES(:docu, :tp_docu, :nombre, :apellido, :correo, :contra, :direc, :telf)');
+        $query = $this->db->connect()->prepare('INSERT INTO persona (documento, tipo_documento, nombre, apellido, correo) 
+                        VALUES(:docu, :tp_docu, :nombre, :apellido, :correo)');
         try {
             $query->execute([
-                'docu' => $persona->getDocumento(),
-                'tp_docu' => $persona->getTipo_documento(),
-                'nombre' => $persona->getNombre(),
+                'docu' =>  $persona->getDocumento(),
+                'tp_docu' =>  $persona->getTipo_Documento(),
+                'nombre' =>  $persona->getNombre(),
                 'apellido' => $persona->getApellido(),
-                'correo' => $persona->getCorreo(),
-                'contra' => $persona->getContrasena(),
-                'direc' => $persona->getDireccion(),
-                'telf' => $persona->getTelefono()
+                'correo' => $persona->getCorreo()
             ]);
             return true;
         } catch (PDOException $e) {

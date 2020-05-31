@@ -32,7 +32,7 @@ class TipoContratoModel extends Model
         }
     }
 
-    public function ObtenerPorId($id)
+    public function obtenerPorId($id)
     {
         $query = $this->db->connect()->prepare("SELECT * FROM tipo_contrato WHERE id = :id");
         try {

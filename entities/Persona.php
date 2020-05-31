@@ -12,6 +12,25 @@ class Persona
     private $direccion;
     private $telefono;
 
+
+    public function __construct(
+        $documento = null,
+        $tipo_documento = null,
+        $nombre = null,
+        $apellido = null,
+        $correo = null,
+        $direccion = null,
+        $telefono = null
+    ) {
+        $this->documento = $documento;
+        $this->tipo_documento = $tipo_documento;
+        $this->nombre = $nombre;
+        $this->apellido = $apellido;
+        $this->correo = $correo;
+        $this->direccion = $direccion;
+        $this->telefono = $telefono;
+    }
+
     public function getDocumento()
     {
         return $this->documento;

@@ -5,8 +5,13 @@ class Empleado{
 	private $documento;
 	private $codigo;
 
+	public function __construct($documento = null, $codigo = null)
+	{
+		$this->documento = $documento;
+		$this->codigo = $codigo;
+	}
 
-	public function getDocumeto(){
+	public function getDocumento(){
 
 		return $this->documento;
 	}

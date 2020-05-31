@@ -72,7 +72,6 @@
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#agregarEmpleados">Agregar Empleados</button>
                             </div>
                         </div>
-
                         <div class="table-responsive">
                             <table class="table text-center tabla">
                                 <thead class=" text-primary">
@@ -84,32 +83,37 @@
                                     <th>Apellido</th>
                                     <th>Documento</th>
                                     <th>Correo</th>
+                                    <th>Cargo</th>
                                     <th>Acción</th>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    require_once 'models/EmpleadoModel.php';
+                                    $eModel = new EmpleadoModel();
+                                    require_once 'models/CargoEmpleadoModel.php';
+                                    require_once 'models/CargoModel.php';
+                                    $cModel = new CargoModel();
+                                    
+                                    $CargoEmpModel = new CargoEmpleadoModel();
+                                    foreach ($integrantes as $persona) {
 
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td> 1151563</td>
-                                        <td>Eduard</td>
-                                        <td>Cantillo</td>
-                                        <td>15985645</td>
-                                        <td>eduard@gmail.com</td>
-                                        <td>
-                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-danger">Eliminar</button></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>1151561</td>
-                                        <td>Fabián</td>
-                                        <td>Gonzales</td>
-                                        <td>14685041</td>
-                                        <td>fabian@gmail.com</td>
-                                        <td>
-                                            <a href="<?= URL ?>entregable"><button type="button" class="btn btn-danger">Eliminar</button></a>
-                                        </td>
-                                    </tr>
+
+                                    ?>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td><?= $eModel->obtenerById($persona->getDocumento())->getCodigo() ?></td>
+                                            <td><?= $persona->getNombre() ?></td>
+                                            <td><?= $persona->getApellido() ?></td>
+                                            <td><?= $persona->getDocumento() ?></td>
+                                            <td><?= $persona->getCorreo() ?></td>
+                                            <td><?= $cModel->obtenerById($CargoEmpModel->obtenerCargoPorId($persona->getDocumento())['cargo'])['nombre'] ?></td>
+                                            <td>
+                                                <a href="<?= URL ?>proyectos/desvincularIntegrante/<?= $persona->getDocumento() ?>/<?= str_replace('entregables/', '', $_GET['url']) ?>"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -148,7 +152,7 @@
 
 
     <!-- Agregar Empleados -->
-    <?php require_once 'views/gerente/proyectos/agregarEmpleados.php'; ?>
+    <?php require_once 'agregarEmpleados.php'; ?>
 
     <?php require_once 'views/gerente/templates/footer.php'; ?>
 

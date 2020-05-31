@@ -64,10 +64,10 @@ class ProyectosController extends Controller
             $_POST['duracion'], $_POST['presupuesto'])) {
 
                 $codigo =  $_POST['codigo'];
-                $nombre = strtolower($_POST['nombre']);
-                $contrato = strtolower($_POST['contrato']);
-                $periodoInicio = strtolower($_POST['periodoInicio']);
-                $duracion = strtolower($_POST['duracion']);
+                $nombre = $_POST['nombre'];
+                $contrato = $_POST['contrato'];
+                $periodoInicio = $_POST['periodoInicio'];
+                $duracion = $_POST['duracion'];
                 $presupuesto = $_POST['presupuesto'];
 
                 $project = new Proyecto($codigo, $nombre, $contrato, $periodoInicio, $duracion, "en progreso", $presupuesto);
@@ -118,5 +118,9 @@ class ProyectosController extends Controller
             $this->__construct();
             $this->view('proyectos/listar', $this->datos);
         }
+    }
+    public function actionDesvincularIntegrante($param){
+        $this->proyectoModel->quitarIntegrante($param[0]);
+        header('location: '.URL.'entregables/'.$param[1]);
     }
 }

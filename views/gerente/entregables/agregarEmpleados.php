@@ -29,25 +29,32 @@
                                         <th>Apellido</th>
                                         <th>Documento</th>
                                         <th>Correo</th>
+                                        <th>Cargo</th>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        require_once 'models/EmpleadoModel.php';
+                                        $eModel = new EmpleadoModel();
+                                        require_once 'models/ProyectoModel.php';
+                                        $pModel = new ProyectoModel();
+                                        require_once 'models/CargoEmpleadoModel.php';
+                                        $CargoEmpModel = new CargoEmpleadoModel();
+                                        require_once 'models/CargoModel.php';
+                                        $cModel = new CargoModel();
 
-                                        <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td> 1151563</td>
-                                            <td>Eduard</td>
-                                            <td>Cantillo</td>
-                                            <td>15985645</td>
-                                            <td>eduard@gmail.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>1151561</td>
-                                            <td>Fabián</td>
-                                            <td>Gonzales</td>
-                                            <td>14685041</td>
-                                            <td>fabian@gmail.com</td>
-                                        </tr>
+                                        foreach ($pModel->obtenerEmpleadosDisponibles() as $disponible) {
+
+                                        ?>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td><?= $eModel->obtenerById($disponible->getDocumento())->getCodigo() ?></td>
+                                                <td><?= $disponible->getNombre() ?></td>
+                                                <td><?= $disponible->getApellido() ?></td>
+                                                <td><?= $disponible->getDocumento() ?></td>
+                                                <td><?= $disponible->getCorreo() ?></td>
+                                                <td><?= $cModel->obtenerById($CargoEmpModel->obtenerCargoPorId($disponible->getDocumento())['cargo'])['nombre'] ?></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
