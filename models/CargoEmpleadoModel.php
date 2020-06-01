@@ -47,7 +47,23 @@ class CargoEmpleadoModel extends Model
         }
     }
 
-    public function obtenerTodos()
+    public function obtenerPorRol($cargo)
     {
+        $personas = [];
+        require_once 'PersonaModel.php';
+
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM cargo_empleado WHERE cargo = $cargo");
+
+
+            while ($row = $query->fetch()) {
+                $pModel = new PersonaModel();
+                $persona = $pModel->ObtenerPorId($row['documento']);
+                array_push($personas, $persona);
+            }
+            return $personas;
+        } catch (PDOException $e) {
+            return [];
+        }
     }
 }

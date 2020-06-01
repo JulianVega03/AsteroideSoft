@@ -25,8 +25,8 @@ Core JS Files
 
 
   function actualizar() {
-    var checks = $('tbody > tr > td > :checked');
-    console.log(checks);
+    var checks = $('#proyectos > tr > td > :checked');
+    // console.log(checks);
     if (checks.length == 0) {
       $('.edit').prop("disabled", true);
       $('.delete').prop("disabled", true);

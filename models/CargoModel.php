@@ -27,6 +27,16 @@ class CargoModel extends Model{
             return null;
         }
     }
+    public function obtenerByNombre($nombre_cargo){
+        $query = $this->db->connect()->prepare("SELECT id FROM cargo WHERE nombre = :nombre_cargo");
+        try {
+            $query->execute(['nombre_cargo' => $nombre_cargo]);
+
+            return $query->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
 
     public function obtenerTodos()
     {

@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post">
+            <form action="<?= URL ?>proyecto/asignar/" method="post" id="form-empleados">
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="row">
@@ -31,7 +31,7 @@
                                         <th>Correo</th>
                                         <th>Cargo</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="empleados">
                                         <?php
                                         require_once 'models/EmpleadoModel.php';
                                         $eModel = new EmpleadoModel();
@@ -44,17 +44,21 @@
 
                                         foreach ($pModel->obtenerEmpleadosDisponibles() as $disponible) {
 
+                                            if ($cModel->obtenerById($CargoEmpModel->obtenerCargoPorId($disponible->getDocumento())['cargo'])['nombre'] != "Jefe de Proyectos") {
                                         ?>
-                                            <tr>
-                                                <td><input type="checkbox"></td>
-                                                <td><?= $eModel->obtenerById($disponible->getDocumento())->getCodigo() ?></td>
-                                                <td><?= $disponible->getNombre() ?></td>
-                                                <td><?= $disponible->getApellido() ?></td>
-                                                <td><?= $disponible->getDocumento() ?></td>
-                                                <td><?= $disponible->getCorreo() ?></td>
-                                                <td><?= $cModel->obtenerById($CargoEmpModel->obtenerCargoPorId($disponible->getDocumento())['cargo'])['nombre'] ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                                <tr>
+                                                    <td><input type="checkbox" class="<?= $disponible->getDocumento() ?>"></td>
+                                                    <td><?= $eModel->obtenerById($disponible->getDocumento())->getCodigo() ?></td>
+                                                    <td><?= $disponible->getNombre() ?></td>
+                                                    <td><?= $disponible->getApellido() ?></td>
+                                                    <td><?= $disponible->getDocumento() ?></td>
+                                                    <td><?= $disponible->getCorreo() ?></td>
+                                                    <td><?= $cModel->obtenerById($CargoEmpModel->obtenerCargoPorId($disponible->getDocumento())['cargo'])['nombre'] ?></td>
+                                                </tr>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -70,6 +74,29 @@
             </form>
         </div>
     </div>
+
+    <script>
+        var checks = $('#empleados > tr > td > :checkbox');
+        for (const check of checks) {
+            check.addEventListener('click', agregar);
+        }
+        function agregar(){
+            var checks = $('#empleados > tr > td > :checked');
+            var formulario = document.getElementById("form-empleados");
+            if(checks.length == 0){
+                formulario.setAttribute("action", "#");
+            }else if (checks.length == 1) {
+                action = "<?=URL?>proyectos/asignarEmpleados/<?= str_replace('entregables/', '', $_GET['url']) ?>/"+checks[0].className;
+                formulario.setAttribute("action", action);
+            }else{
+                action = "<?=URL?>proyectos/asignarEmpleados/<?= str_replace('entregables/', '', $_GET['url']) ?>/";
+                for(const check of checks){
+                    action += check.className+"/";
+                }
+                formulario.setAttribute("action", action);
+            }
+        }
+    </script>
 
     <script>
         document.querySelector("#buscarModal").onkeyup = function() {

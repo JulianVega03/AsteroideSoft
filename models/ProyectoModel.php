@@ -158,6 +158,25 @@ class ProyectoModel extends Model
         }
     }
 
+    public function asignarEmpleado($id_proyecto, $documento_empleado, $esJefe)
+    {
+        $query = $this->db->connect()->prepare('INSERT INTO asignacion (empleado, proyecto, jefe) VALUES(:empleado, :proyecto, :jefe)');
+        try {
+            $query->execute([
+                'empleado' => $documento_empleado,
+                'proyecto' => $id_proyecto,
+                'jefe' => $esJefe
+            ]);
+            if ($query->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function estaAsignado($documento)
     {
         $query = $this->db->connect()->prepare("SELECT * FROM asignacion WHERE empleado = :documento");

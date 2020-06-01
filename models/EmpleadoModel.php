@@ -48,7 +48,4 @@ class EmpleadoModel extends Model
         }
     }
 
-    public function obtenerTodos()
-    {
-    }
 }

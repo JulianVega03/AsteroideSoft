@@ -47,7 +47,7 @@
                                         Ingresar
                                     </th>
                                 </thead>
-                                <tbody>
+                                <tbody id="proyectos">
                                     <?php
                                     foreach ($listProyectos as $proyecto) {
                                     ?>

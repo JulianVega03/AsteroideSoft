@@ -50,16 +50,18 @@
                         </div>
                         <br>
                         <hr>
-                        <!-- NO FUNCIONA AUN -->
                         <div class="form-group col-md-12 ">
                             <label for="">Asignar Lider de Proyecto</label>
                             <select id="lider_proyecto" class="form-control" name="lider">
-                                <option value="">Julian Andres Becerra</option>
-                                <option value="">Angel Yesid Mondragon</option>
-                                <option value="">Frank Jean Gomez</option>
+                                <?php
+                                foreach ($jefes_proyectos as $jefe) {
+                                ?>
+                                    <option value="<?= $jefe->getDocumento() ?>"><?= $jefe->getNombre() ?> <?= $jefe->getApellido() ?></option>
+                                <?php
+                                }
+                                ?>
                             </select>
                         </div>
-                        <!-- /FIN -->
                     </div>
                 </div>
                 <div class="modal-footer">

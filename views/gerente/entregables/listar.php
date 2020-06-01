@@ -30,11 +30,13 @@
                                 <div class="card__grilla-elemento plus"><button class="add" data-toggle="modal" data-target="#modalAñadirEntregable"><i class="fas fa-plus"></i></button></div>
 
                                 <?php
+                                $i=1;
                                 foreach ($entregables as $entregable) {
+                                    
                                 ?>
 
                                     <div class="card__grilla-elemento text-center" data-edit="#modalEntregable<?= $entregable->getId() ?>">
-                                        <div class="circle">E1</div>
+                                        <div class="circle">E<?=$i++?></div>
                                         <div class="porcentaje"><?= $entregable->getNombre() ?></div>
                                     </div>
 

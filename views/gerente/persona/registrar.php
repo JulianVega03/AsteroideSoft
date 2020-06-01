@@ -19,7 +19,7 @@
                     <div class="card-body container">
 
                         <form id="form1" action="<?= URL ?>persona/nuevo" method="post" class="needs-validation" style="width: fit-content; margin:auto;font-size:18px">
-                            <div class="row">
+                            <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tipo de documento</label>
