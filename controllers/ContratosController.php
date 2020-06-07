@@ -1,6 +1,7 @@
 <?php
 require_once 'models/PersonaModel.php';
 require_once 'models/TipoContratoModel.php';
+
 class ContratosController extends Controller
 {
 
@@ -10,6 +11,7 @@ class ContratosController extends Controller
     public function __construct()
     {
         $this->contratoModel = $this->model('Contrato');
+        
         $this->datos = [
             "titulo" => "Mis Contratos",
             "listContratos" => $this->listar(),
@@ -125,4 +127,35 @@ class ContratosController extends Controller
             $this->view('contratos/listar', $this->datos);
         }
     }
+
+    public function actionPdf($param = null)
+    {
+       
+        if ($param[0] != null) {
+
+            require_once 'models/ContratoModel.php';
+            $contratoModel = new ContratoModel();
+            $contrato = $contratoModel->obtenerById($param[0]);
+
+            require_once 'models/TipoContratoModel.php';
+            $tipoContModel = new TipoContratoModel();
+            $tipoContrato = $tipoContModel->obtenerPorId($contrato->getTipo());
+
+            require_once 'models/PersonaModel.php';
+            $pModel = new PersonaModel();
+            $persona = $pModel->ObtenerPorId($contrato->getPersona());
+
+            $datos = [
+                "codigo_contrato" =>  $param[0],
+                "tipo_contrato" => strtoupper($tipoContrato->getNombre()),
+                "nombre_persona" => strtoupper($persona->getNombre()). " ". strtoupper($persona->getApellido()),
+                "documento_persona" => $contrato->getPersona(),
+                "fecha_firma" => $contrato->getFechaFirma(),
+                "valor_contrato" => $contrato->getValor()
+            ];
+            $this->view('contratos/contrato-pdf',$datos);
+
+        } 
+    }
+
 }

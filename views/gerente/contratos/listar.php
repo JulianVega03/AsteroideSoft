@@ -82,7 +82,7 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-info">Descargar</button>
+                                                <a href="<?=URL?>contratos/pdf/<?= $contrato->getCodigo() ?>" class="btn btn-info">Descargar</a>
                                             </td>
                                         </tr>
                                         <!-- Modal Delete-->

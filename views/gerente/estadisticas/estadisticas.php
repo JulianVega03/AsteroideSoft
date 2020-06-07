@@ -19,10 +19,21 @@
                         <form action="">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for=""> Codigo: </label>
-                                    <input type="text" class="form-control" id="codEsta">
-                                    <button type="button" class="btn btn-success" onclick="estadisticas()">Generar</button>
+                                    <label for="contrato">Elige un Proyecto</label>
+                                    <select id="contrato" class="form-control" name="contrato">
+                                        <?php
+                                        foreach ($listProyectos as $proyecto) {
+                                        ?>
+                                        
+                                            <option value="<?= $proyecto->getCodigo() ?>"><?= $proyecto->getNombre() ?></option>
+                                        
+                                        <?php
+                                        }
+                                        
+                                        ?>
+                                    </select>
                                 </div>
+                                <button type="button" class="btn btn-success" onclick="estadisticas()">Generar</button>
                             </div>
                         </form>
                     </div>
@@ -44,9 +55,10 @@
 <script>
     function estadisticas() {
 
-        codigo = document.getElementById("codEsta").value;
+        // codigo = document.getElementById("codEsta").value;
 
-        datos = ["verde", "auzul", "naranga"];
+
+        datos = ["Presupuesto", "Fecha Inicio", "Duracion"];
         valores = [5, 2, 3];
 
         //  en datos debe ir el objeto y en valores la cantidad ambos deben ser vectores

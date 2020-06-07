@@ -30,8 +30,27 @@ class ContratoModel extends Model{
         }
     }
 
-    public function obtenerById(){
-       
+    public function obtenerById($codigo){
+        $query = $this->db->connect()->prepare("SELECT * FROM contrato WHERE codigo = :codigo");
+        try {
+            $query->execute(['codigo' => $codigo]);
+
+            while ($row = $query->fetch()) {
+                $this->contrato->setCodigo($row['codigo']);
+                $this->contrato->setTipo($row['tipo']);
+                $this->contrato->setPersona($row['persona']);
+                $this->contrato->setFechaFirma($row['fecha_firma']);
+                $this->contrato->setValor($row['valor']);
+                $this->contrato->setEstado($row['estado']);
+            }
+            if ($query->rowCount() > 0) {
+                return $this->contrato;
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            return null;
+        }
     }
 
     public function obtenerTodos(){

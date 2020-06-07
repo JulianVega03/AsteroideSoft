@@ -12,8 +12,12 @@ class EstadisticasController extends Controller
 
     public function actionIndex()
     {
+        require_once 'models/ProyectoModel.php';
+        $pModel = new ProyectoModel();
+
         $datos = [
-            "titulo" => "Estadisticas"
+            "titulo" => "Estadisticas",
+            "listProyectos" => $pModel->obtenerTodos()
         ];
         $this->view('estadisticas/estadisticas',$datos);
     }

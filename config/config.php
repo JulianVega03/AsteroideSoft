@@ -1,7 +1,7 @@
 <?php
 
 
-define ('URL','http://localhost/PHP-MVC/');
+define ('URL','http://localhost/pdf/');
 
 define('HOST','localhost');
 define('DB','integrador');
