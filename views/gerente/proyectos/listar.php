@@ -38,7 +38,7 @@
                                         Contrato
                                     </th>
                                     <th>
-                                        Duración
+                                        Duración (Días)
                                     </th>
                                     <th>
                                         Estado

@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="form-group col-md-5">
-                                <label for="duracion">Duración</label>
+                                <label for="duracion">Duración (Días)</label>
                                 <input type="number" class="form-control" id="duracion" name="duracion" required>
                             </div>
                         </div>
