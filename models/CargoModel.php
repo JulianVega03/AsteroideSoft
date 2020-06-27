@@ -1,10 +1,11 @@
 <?php
 require_once 'entities/Cargo.php';
 
-class CargoModel extends Model{
+class CargoModel extends Model
+{
 
-        private $db;
-        private $cargo;
+    private $db;
+    private $cargo;
 
     function __construct()
     {
@@ -13,21 +14,27 @@ class CargoModel extends Model{
     }
 
 
-    public function insertar($cargo){
-       
+    public function insertar($cargo)
+    {
     }
 
-    public function obtenerById($id_cargo){
-        $query = $this->db->connect()->prepare("SELECT nombre FROM cargo WHERE id = :id");
+    public function obtenerById($id_cargo)
+    {
+        $query = $this->db->connect()->prepare("SELECT nombre FROM cargo WHERE id = :id_cargo");
         try {
-            $query->execute(['id' => $id_cargo]);
+            $query->execute(['id_cargo' => $id_cargo]);
 
-            return $query->fetch(PDO::FETCH_ASSOC);
+            if ($query->rowCount()) {
+                return $query->fetch();
+            } else {
+                return null;
+            }
         } catch (PDOException $e) {
             return null;
         }
     }
-    public function obtenerByNombre($nombre_cargo){
+    public function obtenerByNombre($nombre_cargo)
+    {
         $query = $this->db->connect()->prepare("SELECT id FROM cargo WHERE nombre = :nombre_cargo");
         try {
             $query->execute(['nombre_cargo' => $nombre_cargo]);
@@ -56,5 +63,4 @@ class CargoModel extends Model{
             return [];
         }
     }
-
 }

@@ -14,6 +14,10 @@ class UserSession extends Controller{
         $_SESSION['user'] = $user;
     }
 
+    public function setRolUser($rol){
+        $_SESSION['rol'] = $rol;
+    }
+
     public function getCurrentUser(){
         return $_SESSION['user'];
     }

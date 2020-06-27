@@ -85,9 +85,9 @@ class PersonaModel extends Model
         $query->execute(['user' => $user, 'pass' => $pass]);
 
         if ($query->rowCount()) {
-            return true;
+            return $query->fetch();
         } else {
-            return false;
+            return null;
         }
     }
 

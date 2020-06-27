@@ -1,6 +1,7 @@
 <?php
 require_once 'UserSession.php';
-
+require_once 'models/CargoEmpleadoModel.php';
+require_once 'models/CargoModel.php';
 class IndexController extends Controller
 {
 
@@ -26,7 +27,14 @@ class IndexController extends Controller
             $userForm = $_POST['email'];
             $passForm = $_POST['pass'];
 
-            if ($this->personaModel->userExists($userForm, $passForm)) {
+
+            if ($this->personaModel->userExists($userForm, $passForm) != null) {
+                $cargoEmplModel = new CargoEmpleadoModel();
+                $em = $cargoEmplModel->obtenerCargoPorId($this->personaModel->userExists($userForm, $passForm)[0]);
+
+                $cargoModel = new CargoModel();
+                $cargoUser = $cargoModel->obtenerById($em['cargo']);
+                $userSession->setRolUser($cargoUser['nombre']);
                 $userSession->setCurrentUser($userForm);
                 $this->personaModel->setUser($userForm);
 

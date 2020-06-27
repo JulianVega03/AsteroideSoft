@@ -7,7 +7,7 @@
       <!-- <p>CT</p> -->
     </a>
     <a href="#" class="simple-text logo-normal">
-      Gerente
+      <?= $_SESSION['rol'] ?>
       <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -51,7 +51,7 @@
           <p>Reportes</p>
         </a>
       </li>
-      
+
 
       <li class="active-pro" data-active="asteroide">
         <a href="<?= URL ?>asteroide/">
